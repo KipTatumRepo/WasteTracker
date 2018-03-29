@@ -36,7 +36,9 @@ namespace Waste_Tracker
 
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
+            da.Fill(ds.WasteTrackerStations);
             //sbe.WasteTrackerDBs.Load();
             //miViewSource.Source = sbe.WasteTrackerDBs.Local;
             
