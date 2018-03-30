@@ -10,7 +10,7 @@
 namespace Waste_Tracker
 {
     using System;
-    using System.Collections.Generic;
+    using System.Collections.ObjectModel;
     
     public partial class WasteTrackerDB
     {

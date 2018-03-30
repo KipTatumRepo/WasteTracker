@@ -19,30 +19,27 @@ namespace Waste_Tracker
     /// <summary>
     /// Interaction logic for PageEnterWaste.xaml
     /// </summary>
+
     public partial class PageEnterWaste : Page
     {
-        //SandboxEntities sbe = new SandboxEntities();
-        //CollectionViewSource miViewSource;
+
         public PageEnterWaste()
         {
             InitializeComponent();
+
+            //Load database 
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+
+            //Load combobox of stations
+            CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
+            SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
+            sbda.Fill(ds.WasteTrackerStations);
+
+            //Load datagrid of menu items
+            CollectionViewSource miViewSource = ((CollectionViewSource)(FindResource("wasteTrackerDBViewSource")));
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             da.Fill(ds.WasteTrackerDB);
-            CollectionViewSource miViewSource = ((CollectionViewSource)(FindResource("wasteTrackerDBViewSource")));
-            
 
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-            SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
-            da.Fill(ds.WasteTrackerStations);
-            //sbe.WasteTrackerDBs.Load();
-            //miViewSource.Source = sbe.WasteTrackerDBs.Local;
-            
-           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -50,7 +47,28 @@ namespace Waste_Tracker
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             da.Update(ds.WasteTrackerDB);
-            
+        }
+
+        private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            var item = wasteTrackerStationsComboBox.SelectedIndex;
+            MessageBox.Show(item.ToString());
+
+            var query = from d in ds.WasteTrackerDB
+                        where d.StationId == item
+                        select new
+                        {
+                            d.MenuItem,
+                            d.LeftOver,
+                            d.Par,
+                            d.UoM,
+                        };
+
+            wasteTrackerDBDataGrid.ItemsSource = query;
+            //lost on what to do here????????????
         }
     }
+
+
 }

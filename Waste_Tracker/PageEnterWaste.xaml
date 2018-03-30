@@ -7,7 +7,7 @@
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageEnterWaste"
-      Loaded="Page_Loaded">
+     >
     <Page.Resources>
         <local:SandboxDataSet x:Key="sandboxDataSet"/>
         <CollectionViewSource x:Key="wasteTrackerStationsViewSource" Source="{Binding WasteTrackerStations, Source={StaticResource sandboxDataSet}}"/>
@@ -57,7 +57,7 @@
                     HorizontalAlignment="Center" VerticalAlignment="Center" Width="290" Height="42" Margin="0,4,5,10" />
         <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" 
                   HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="42" FontSize="30" 
-                  Margin="5,4,0,10" Grid.Column="0" Grid.Row="3" SelectedValuePath="StationId">
+                  Margin="5,4,0,10" Grid.Column="0" Grid.Row="3" SelectedValuePath="StationId" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel/>
