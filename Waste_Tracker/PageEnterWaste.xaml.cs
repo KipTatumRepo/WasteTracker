@@ -19,10 +19,13 @@ namespace Waste_Tracker
     /// <summary>
     /// Interaction logic for PageEnterWaste.xaml
     /// </summary>
+    /// 
+
+   
 
     public partial class PageEnterWaste : Page
     {
-
+        SandboxEntities context;
         public PageEnterWaste()
         {
             InitializeComponent();
@@ -51,11 +54,13 @@ namespace Waste_Tracker
 
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            context = new SandboxEntities();
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             var item = wasteTrackerStationsComboBox.SelectedIndex;
             MessageBox.Show(item.ToString());
 
-            var query = from d in ds.WasteTrackerDB
+
+            var query = (from d in context.WasteTrackerDBs
                         where d.StationId == item
                         select new
                         {
@@ -63,7 +68,7 @@ namespace Waste_Tracker
                             d.LeftOver,
                             d.Par,
                             d.UoM,
-                        };
+                        }).ToList();
 
             wasteTrackerDBDataGrid.ItemsSource = query;
             //lost on what to do here????????????
