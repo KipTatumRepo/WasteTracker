@@ -26,7 +26,7 @@ namespace Waste_Tracker
 
     public partial class PageEnterWaste : Page
     {
-        SandboxEntities context = new SandboxEntities();
+        
         public PageEnterWaste()
         {
             InitializeComponent();
@@ -38,11 +38,6 @@ namespace Waste_Tracker
             CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
-
-            //Load datagrid of menu items
-            CollectionViewSource miViewSource = ((CollectionViewSource)(FindResource("wasteTrackerDBViewSource")));
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-            da.Fill(ds.WasteTrackerDB);
 
         }
 
