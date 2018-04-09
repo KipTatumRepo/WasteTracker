@@ -22,8 +22,6 @@ namespace Waste_Tracker
     /// </summary>
     /// 
 
-   
-
     public partial class PageEnterWaste : Page
     {
         

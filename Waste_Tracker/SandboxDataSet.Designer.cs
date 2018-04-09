@@ -326,6 +326,8 @@ namespace Waste_Tracker {
             
             private global::System.Data.DataColumn columnUoM;
             
+            private global::System.Data.DataColumn columnDate;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public WasteTrackerDBDataTable() {
@@ -409,6 +411,14 @@ namespace Waste_Tracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn DateColumn {
+                get {
+                    return this.columnDate;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -444,7 +454,7 @@ namespace Waste_Tracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WasteTrackerDBRow AddWasteTrackerDBRow(int PID, int StationId, string MenuItem, decimal LeftOver, decimal Par, string UoM) {
+            public WasteTrackerDBRow AddWasteTrackerDBRow(int PID, int StationId, string MenuItem, decimal LeftOver, decimal Par, string UoM, System.DateTime Date) {
                 WasteTrackerDBRow rowWasteTrackerDBRow = ((WasteTrackerDBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         PID,
@@ -452,7 +462,8 @@ namespace Waste_Tracker {
                         MenuItem,
                         LeftOver,
                         Par,
-                        UoM};
+                        UoM,
+                        Date};
                 rowWasteTrackerDBRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowWasteTrackerDBRow);
                 return rowWasteTrackerDBRow;
@@ -488,6 +499,7 @@ namespace Waste_Tracker {
                 this.columnLeftOver = base.Columns["LeftOver"];
                 this.columnPar = base.Columns["Par"];
                 this.columnUoM = base.Columns["UoM"];
+                this.columnDate = base.Columns["Date"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -505,6 +517,8 @@ namespace Waste_Tracker {
                 base.Columns.Add(this.columnPar);
                 this.columnUoM = new global::System.Data.DataColumn("UoM", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnUoM);
+                this.columnDate = new global::System.Data.DataColumn("Date", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDate);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnPID}, true));
                 this.columnPID.AllowDBNull = false;
@@ -1013,6 +1027,22 @@ namespace Waste_Tracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public System.DateTime Date {
+                get {
+                    try {
+                        return ((global::System.DateTime)(this[this.tableWasteTrackerDB.DateColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Date\' in table \'WasteTrackerDB\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableWasteTrackerDB.DateColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsMenuItemNull() {
                 return this.IsNull(this.tableWasteTrackerDB.MenuItemColumn);
             }
@@ -1057,6 +1087,18 @@ namespace Waste_Tracker {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetUoMNull() {
                 this[this.tableWasteTrackerDB.UoMColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsDateNull() {
+                return this.IsNull(this.tableWasteTrackerDB.DateColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetDateNull() {
+                this[this.tableWasteTrackerDB.DateColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1313,10 +1355,11 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("LeftOver", "LeftOver");
             tableMapping.ColumnMappings.Add("Par", "Par");
             tableMapping.ColumnMappings.Add("UoM", "UoM");
+            tableMapping.ColumnMappings.Add("Date", "Date");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[WasteTrackerDB] WHERE (([PID] = @Original_PID) AND ([StationId] = @Original_StationId) AND ((@IsNull_MenuItem = 1 AND [MenuItem] IS NULL) OR ([MenuItem] = @Original_MenuItem)) AND ((@IsNull_LeftOver = 1 AND [LeftOver] IS NULL) OR ([LeftOver] = @Original_LeftOver)) AND ((@IsNull_Par = 1 AND [Par] IS NULL) OR ([Par] = @Original_Par)) AND ((@IsNull_UoM = 1 AND [UoM] IS NULL) OR ([UoM] = @Original_UoM)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[WasteTrackerDB] WHERE (([PID] = @Original_PID) AND ([StationId] = @Original_StationId) AND ((@IsNull_MenuItem = 1 AND [MenuItem] IS NULL) OR ([MenuItem] = @Original_MenuItem)) AND ((@IsNull_LeftOver = 1 AND [LeftOver] IS NULL) OR ([LeftOver] = @Original_LeftOver)) AND ((@IsNull_Par = 1 AND [Par] IS NULL) OR ([Par] = @Original_Par)) AND ((@IsNull_UoM = 1 AND [UoM] IS NULL) OR ([UoM] = @Original_UoM)) AND ((@IsNull_Date = 1 AND [Date] IS NULL) OR ([Date] = @Original_Date)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -1328,12 +1371,12 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Par", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "Par", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UoM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UoM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[WasteTrackerDB] ([PID], [StationId], [MenuItem], [LeftOver], [" +
-                "Par], [UoM]) VALUES (@PID, @StationId, @MenuItem, @LeftOver, @Par, @UoM);\r\nSELEC" +
-                "T PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (PID = " +
-                "@PID)";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[WasteTrackerDB] ([PID], [StationId], [MenuItem], [LeftOver], [Par], [UoM], [Date]) VALUES (@PID, @StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date);
+SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WHERE (PID = @PID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1341,10 +1384,11 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LeftOver", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "LeftOver", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Par", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "Par", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UoM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[WasteTrackerDB] SET [PID] = @PID, [StationId] = @StationId, [MenuItem] = @MenuItem, [LeftOver] = @LeftOver, [Par] = @Par, [UoM] = @UoM WHERE (([PID] = @Original_PID) AND ([StationId] = @Original_StationId) AND ((@IsNull_MenuItem = 1 AND [MenuItem] IS NULL) OR ([MenuItem] = @Original_MenuItem)) AND ((@IsNull_LeftOver = 1 AND [LeftOver] IS NULL) OR ([LeftOver] = @Original_LeftOver)) AND ((@IsNull_Par = 1 AND [Par] IS NULL) OR ([Par] = @Original_Par)) AND ((@IsNull_UoM = 1 AND [UoM] IS NULL) OR ([UoM] = @Original_UoM)));
-SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (PID = @PID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[WasteTrackerDB] SET [PID] = @PID, [StationId] = @StationId, [MenuItem] = @MenuItem, [LeftOver] = @LeftOver, [Par] = @Par, [UoM] = @UoM, [Date] = @Date WHERE (([PID] = @Original_PID) AND ([StationId] = @Original_StationId) AND ((@IsNull_MenuItem = 1 AND [MenuItem] IS NULL) OR ([MenuItem] = @Original_MenuItem)) AND ((@IsNull_LeftOver = 1 AND [LeftOver] IS NULL) OR ([LeftOver] = @Original_LeftOver)) AND ((@IsNull_Par = 1 AND [Par] IS NULL) OR ([Par] = @Original_Par)) AND ((@IsNull_UoM = 1 AND [UoM] IS NULL) OR ([UoM] = @Original_UoM)) AND ((@IsNull_Date = 1 AND [Date] IS NULL) OR ([Date] = @Original_Date)));
+SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WHERE (PID = @PID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@PID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -1352,6 +1396,7 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@LeftOver", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "LeftOver", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Par", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "Par", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UoM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_PID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "PID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_StationId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_MenuItem", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MenuItem", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
@@ -1362,6 +1407,8 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Par", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 6, 2, "Par", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_UoM", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_UoM", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_Date", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Date", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1377,12 +1424,13 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM dbo.WasteTrackerDB";
+            this._commandCollection[0].CommandText = "SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM dbo.WasteTrackerDB" +
+                "";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM dbo.WasteTrackerDB WHERE" +
-                " StationId = @item";
+            this._commandCollection[1].CommandText = "SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM dbo.WasteTrackerDB" +
+                " WHERE StationId = @item";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
@@ -1470,7 +1518,7 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM) {
+        public virtual int Delete(int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM, global::System.Nullable<global::System.DateTime> Original_Date) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_PID));
             this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_StationId));
             if ((Original_MenuItem == null)) {
@@ -1505,6 +1553,14 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[9].Value = ((string)(Original_UoM));
             }
+            if ((Original_Date.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((System.DateTime)(Original_Date.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1525,7 +1581,7 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(int PID, int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM) {
+        public virtual int Insert(int PID, int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM, global::System.Nullable<global::System.DateTime> Date) {
             this.Adapter.InsertCommand.Parameters[0].Value = ((int)(PID));
             this.Adapter.InsertCommand.Parameters[1].Value = ((int)(StationId));
             if ((MenuItem == null)) {
@@ -1552,6 +1608,12 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
             else {
                 this.Adapter.InsertCommand.Parameters[5].Value = ((string)(UoM));
             }
+            if ((Date.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((System.DateTime)(Date.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -1572,7 +1634,7 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int PID, int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM, int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM) {
+        public virtual int Update(int PID, int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM, global::System.Nullable<global::System.DateTime> Date, int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM, global::System.Nullable<global::System.DateTime> Original_Date) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(PID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(StationId));
             if ((MenuItem == null)) {
@@ -1599,39 +1661,53 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
             else {
                 this.Adapter.UpdateCommand.Parameters[5].Value = ((string)(UoM));
             }
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_PID));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_StationId));
-            if ((Original_MenuItem == null)) {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            if ((Date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((System.DateTime)(Date.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_MenuItem));
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_PID));
+            this.Adapter.UpdateCommand.Parameters[8].Value = ((int)(Original_StationId));
+            if ((Original_MenuItem == null)) {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[10].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_MenuItem));
             }
             if ((Original_LeftOver.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[11].Value = ((decimal)(Original_LeftOver.Value));
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((decimal)(Original_LeftOver.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[10].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[11].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
             }
             if ((Original_Par.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[13].Value = ((decimal)(Original_Par.Value));
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((decimal)(Original_Par.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[12].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[13].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
             }
             if ((Original_UoM == null)) {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[15].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[14].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[15].Value = ((string)(Original_UoM));
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((string)(Original_UoM));
+            }
+            if ((Original_Date.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((System.DateTime)(Original_Date.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -1653,8 +1729,8 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM FROM WasteTrackerDB WHERE (P
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM, int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM) {
-            return this.Update(Original_PID, StationId, MenuItem, LeftOver, Par, UoM, Original_PID, Original_StationId, Original_MenuItem, Original_LeftOver, Original_Par, Original_UoM);
+        public virtual int Update(int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM, global::System.Nullable<global::System.DateTime> Date, int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM, global::System.Nullable<global::System.DateTime> Original_Date) {
+            return this.Update(Original_PID, StationId, MenuItem, LeftOver, Par, UoM, Date, Original_PID, Original_StationId, Original_MenuItem, Original_LeftOver, Original_Par, Original_UoM, Original_Date);
         }
     }
     
