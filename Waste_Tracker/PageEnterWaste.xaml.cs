@@ -36,7 +36,8 @@ namespace Waste_Tracker
             CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
-
+            MessageBox.Show(TodayDate().ToString());
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -55,11 +56,13 @@ namespace Waste_Tracker
            
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation(ds.WasteTrackerDB, item);
+        }
 
-
-            
+        private DateTime TodayDate()
+        {
+            DateTime now = DateTime.Now;
+            return now;
         }
     }
-
 
 }
