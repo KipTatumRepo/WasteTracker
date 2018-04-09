@@ -66,38 +66,14 @@
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SandboxDataSet.cs">
-      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
     </Compile>
     <Compile Include="SandboxDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="WasteTrackerDataModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WasteTrackerDataModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WasteTrackerDataModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WasteTrackerDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WasteTrackerDataModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WasteTrackerDataModel.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="WasteTrackerDB.cs">
-      <DependentUpon>WasteTrackerDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="WasteTrackerStation.cs">
-      <DependentUpon>WasteTrackerDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
     </Compile>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
@@ -141,10 +117,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <EntityDeploy Include="WasteTrackerDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WasteTrackerDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
     <None Include="SandboxDataSet.xsc">
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </None>
@@ -156,24 +128,9 @@
     <None Include="SandboxDataSet.xss">
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </None>
-    <None Include="WasteTrackerDataModel.edmx.diagram">
-      <DependentUpon>WasteTrackerDataModel.edmx</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="WasteTrackerDataModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WasteTrackerDataModel.Context.cs</LastGenOutput>
-      <DependentUpon>WasteTrackerDataModel.edmx</DependentUpon>
-    </Content>
-    <Content Include="WasteTrackerDataModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WasteTrackerDataModel.edmx</DependentUpon>
-      <LastGenOutput>WasteTrackerDataModel.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
