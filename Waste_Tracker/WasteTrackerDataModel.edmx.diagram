@@ -5,8 +5,8 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="b6a49ee9891e48c7b2de337836873438" Name="Diagram1">
-        <EntityTypeShape EntityType="SandboxModel.WasteTrackerDB" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SandboxModel.WasteTrackerStation" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SandboxModel.WasteTrackerDB" Width="1.5" PointX="2.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SandboxModel.WasteTrackerStation" Width="1.5" PointX="6.125" PointY="1" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

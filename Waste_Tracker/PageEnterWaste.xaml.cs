@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 
+
 namespace Waste_Tracker
 {
     /// <summary>
@@ -25,7 +26,7 @@ namespace Waste_Tracker
 
     public partial class PageEnterWaste : Page
     {
-        SandboxEntities context;
+        SandboxEntities context = new SandboxEntities();
         public PageEnterWaste()
         {
             InitializeComponent();
@@ -54,24 +55,16 @@ namespace Waste_Tracker
 
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            context = new SandboxEntities();
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-            var item = wasteTrackerStationsComboBox.SelectedIndex;
-            MessageBox.Show(item.ToString());
+            //get index of combobox selected item 0 based
+            int item = wasteTrackerStationsComboBox.SelectedIndex;
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+           
+            //fill datagrid with dataset of menu items that match station selection
+            da.FillByStation(ds.WasteTrackerDB, item);
 
 
-            var query = (from d in context.WasteTrackerDBs
-                        where d.StationId == item
-                        select new
-                        {
-                            d.MenuItem,
-                            d.LeftOver,
-                            d.Par,
-                            d.UoM,
-                        }).ToList();
-
-            wasteTrackerDBDataGrid.ItemsSource = query;
-            //lost on what to do here????????????
+            
         }
     }
 
