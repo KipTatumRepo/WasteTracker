@@ -42,10 +42,22 @@ namespace Waste_Tracker
             string par = parTextBox.Text;
             
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-            da.InsertQuery(StationId, MenuItem);
 
-            MessageBox.Show("New Menu Item Added");
+            try
+            { 
+                //Custom Insert Statement
+                da.InsertQuery(StationId, MenuItem);
+                MessageBox.Show("New Menu Item Added");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex.Message);
+            }
 
+
+           
+
+            //clear textbox 
             menuItemTextBox.Clear();
         }
 
