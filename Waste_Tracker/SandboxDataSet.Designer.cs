@@ -1421,7 +1421,7 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM dbo.WasteTrackerDB" +
@@ -1433,6 +1433,16 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
                 " WHERE StationId = @item";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[WasteTrackerDB] ( [StationId], [MenuItem], [Par], [UoM]) VALUE" +
+                "S ( @StationId, @MenuItem,  @Par, @UoM );\r\nSELECT StationId, MenuItem, Par, UoM " +
+                "FROM WasteTrackerDB WHERE (StationId = @StationId)";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MenuItem", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "MenuItem", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Par", global::System.Data.SqlDbType.Decimal, 5, global::System.Data.ParameterDirection.Input, 6, 2, "Par", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UoM", global::System.Data.SqlDbType.VarChar, 50, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1731,6 +1741,48 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(int StationId, string MenuItem, global::System.Nullable<decimal> LeftOver, global::System.Nullable<decimal> Par, string UoM, global::System.Nullable<global::System.DateTime> Date, int Original_PID, int Original_StationId, string Original_MenuItem, global::System.Nullable<decimal> Original_LeftOver, global::System.Nullable<decimal> Original_Par, string Original_UoM, global::System.Nullable<global::System.DateTime> Original_Date) {
             return this.Update(Original_PID, StationId, MenuItem, LeftOver, Par, UoM, Date, Original_PID, Original_StationId, Original_MenuItem, Original_LeftOver, Original_Par, Original_UoM, Original_Date);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int InsertQuery(int StationId, string MenuItem, global::System.Nullable<decimal> Par, string UoM) {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
+            command.Parameters[0].Value = ((int)(StationId));
+            if ((MenuItem == null)) {
+                command.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[1].Value = ((string)(MenuItem));
+            }
+            if ((Par.HasValue == true)) {
+                command.Parameters[2].Value = ((decimal)(Par.Value));
+            }
+            else {
+                command.Parameters[2].Value = global::System.DBNull.Value;
+            }
+            if ((UoM == null)) {
+                command.Parameters[3].Value = global::System.DBNull.Value;
+            }
+            else {
+                command.Parameters[3].Value = ((string)(UoM));
+            }
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
