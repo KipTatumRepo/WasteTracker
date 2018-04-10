@@ -22,6 +22,8 @@ namespace Waste_Tracker
     {
         int StationId;
         string MenuItem;
+        decimal Par;
+        string UoM;
         public PageAddItems()
         {
             InitializeComponent();
@@ -39,14 +41,15 @@ namespace Waste_Tracker
         {
             StationId = wasteTrackerStationsComboBox.SelectedIndex;
             MenuItem = menuItemTextBox.Text;
-            string par = parTextBox.Text;
+            Par = decimal.Parse(parTextBox.Text);
+            UoM = "ea";
             
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
 
             try
             { 
-                //Custom Insert Statement
-                da.InsertQuery(StationId, MenuItem);
+            //Custom Insert Statement
+                da.InsertQuery(StationId, MenuItem, Par, UoM);
                 MessageBox.Show("New Menu Item Added");
             }
             catch (Exception ex)
@@ -54,13 +57,10 @@ namespace Waste_Tracker
                 MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex.Message);
             }
 
-
-           
-
             //clear textbox 
             menuItemTextBox.Clear();
+            parTextBox.Clear();
+            uoMTextBox.Clear();
         }
-
-       
     }
 }
