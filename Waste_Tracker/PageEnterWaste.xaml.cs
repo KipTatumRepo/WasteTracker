@@ -28,21 +28,36 @@ namespace Waste_Tracker
         {
             InitializeComponent();
 
-            //Load database 
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            try
+            {
+                //Load database 
+                SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
 
-            //Load combobox of stations
-            CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
-            SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
-            sbda.Fill(ds.WasteTrackerStations);
+                //Load combobox of stations
+                CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
+                SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
+                sbda.Fill(ds.WasteTrackerStations);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+            }
 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            try
+            { 
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             da.Update(ds.WasteTrackerDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+            }
         }
 
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
