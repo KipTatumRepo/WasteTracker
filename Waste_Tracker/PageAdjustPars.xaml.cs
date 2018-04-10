@@ -12,19 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Data.Entity;
-
 
 namespace Waste_Tracker
 {
     /// <summary>
-    /// Interaction logic for PageEnterWaste.xaml
+    /// Interaction logic for PageAdjustPars.xaml
     /// </summary>
-
-    public partial class PageEnterWaste : Page
+    public partial class PageAdjustPars : Page
     {
-        
-        public PageEnterWaste()
+        public PageAdjustPars()
         {
             InitializeComponent();
 
@@ -35,14 +31,6 @@ namespace Waste_Tracker
             CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
-
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-            da.Update(ds.WasteTrackerDB);
         }
 
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,10 +39,16 @@ namespace Waste_Tracker
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-           
+
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation(ds.WasteTrackerDB, item);
         }
-    }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            da.Update(ds.WasteTrackerDB);
+        }
+    }
 }
