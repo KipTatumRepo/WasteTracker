@@ -48,7 +48,14 @@ namespace Waste_Tracker
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-            da.Update(ds.WasteTrackerDB);
+            try
+            {
+                da.Update(ds.WasteTrackerDB);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+            }
         }
     }
 }
