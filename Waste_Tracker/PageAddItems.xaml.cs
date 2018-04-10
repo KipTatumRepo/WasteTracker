@@ -20,6 +20,8 @@ namespace Waste_Tracker
     /// </summary>
     public partial class PageAddItems : Page
     {
+        int StationId;
+        string MenuItem;
         public PageAddItems()
         {
             InitializeComponent();
@@ -32,5 +34,21 @@ namespace Waste_Tracker
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            StationId = wasteTrackerStationsComboBox.SelectedIndex;
+            MenuItem = menuItemTextBox.Text;
+            string par = parTextBox.Text;
+            
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            da.InsertQuery(StationId, MenuItem);
+
+            MessageBox.Show("New Menu Item Added");
+
+            menuItemTextBox.Clear();
+        }
+
+       
     }
 }

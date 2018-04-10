@@ -26,6 +26,7 @@
         </Style>
         <local:SandboxDataSet x:Key="sandboxDataSet"/>
         <CollectionViewSource x:Key="wasteTrackerStationsViewSource" Source="{Binding WasteTrackerStations, Source={StaticResource sandboxDataSet}}"/>
+        <CollectionViewSource x:Key="wasteTrackerDBViewSource" Source="{Binding WasteTrackerDB, Source={StaticResource sandboxDataSet}}"/>
     </Page.Resources>
     <Grid Background="OldLace" DataContext="{StaticResource wasteTrackerStationsViewSource}">
         <Grid.ColumnDefinitions>
@@ -35,14 +36,13 @@
         </Grid.ColumnDefinitions>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".25*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height=".15*"/>
+
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50"  />
         <TextBlock Grid.Row="1" Grid.Column="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Add Menu Item" Height="50"   />
@@ -55,15 +55,46 @@
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <TextBox  Height="39" Grid.Row="4" Grid.Column="1" Margin="0,0,260,0" Text="TextBox" HorizontalAlignment="Right" VerticalAlignment="Top" 
-                  Width="253" FontSize="30"/>
-        <ComboBox  Grid.Row="5" Grid.Column="1" Margin="0,0,260,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="253" FontSize="30" Height="37" />
-        <TextBox  Height="36" Grid.Row="6" Grid.Column="1" Margin="0,0,260,0" TextWrapping="Wrap" Text="TextBox"  HorizontalAlignment="Right" VerticalAlignment="Top" 
-                  Width="253" FontSize="30" />
-        <TextBlock  Grid.Column="1" Grid.Row="4" Margin="260,0,0,0" Text="Item Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30"/>
-        <TextBlock  Grid.Column="1" Grid.Row="5" Margin="260,0,0,0" Text="Unit of Measure" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30"/>
-        <TextBlock  Grid.Column="1" Grid.Row="6" Margin="260,0,0,0" Text="Par Level" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="30"/>
-        <Button Content="Save" Grid.Column="1" HorizontalAlignment="center" Grid.Row="7" VerticalAlignment="Top" Width="136" Height="37"/>
-        
+        <Button Content="Save" Grid.Column="1" HorizontalAlignment="center" Grid.Row="7" VerticalAlignment="Top" Width="136" Height="37" Click="Button_Click"/>
+        <Grid x:Name="grid1" DataContext="{StaticResource wasteTrackerDBViewSource}" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="1" Grid.RowSpan="5" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+        </Grid>
+        <Grid x:Name="grid2" DataContext="{StaticResource wasteTrackerDBViewSource}" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Grid.Column="1" Grid.ColumnSpan="1" Width="548" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Menu Item:" Grid.Column="0" HorizontalAlignment="Center" Margin="3,3,20,3" Grid.Row="0" VerticalAlignment="Center" FontSize="30"/>
+            <TextBox x:Name="menuItemTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="0" 
+                     Text="{Binding MenuItem, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
+            <Label Content="Par:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,20,3" Grid.Row="1" VerticalAlignment="Center" FontSize="30"/>
+            <TextBox x:Name="parTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="1" 
+                     Text="{Binding Par, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
+            <Label Content="UoM:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,20,3" Grid.Row="2" VerticalAlignment="Center" FontSize="30"/>
+            <TextBox x:Name="uoMTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="2" 
+                     Text="{Binding UoM, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
+
+
+        </Grid>
+
     </Grid>
 </Page>
