@@ -50,9 +50,10 @@ namespace Waste_Tracker
         {
             try
             { 
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-            da.Update(ds.WasteTrackerDB);
+                SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+                SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+                da.Update(ds.WasteTrackerDB);
+                MessageBox.Show("Leftover values have been updated");
             }
             catch (Exception ex)
             {

@@ -51,6 +51,7 @@ namespace Waste_Tracker
             try
             {
                 da.Update(ds.WasteTrackerDB);
+                MessageBox.Show("Par level has been updated.");
             }
             catch (Exception ex)
             {

@@ -76,9 +76,6 @@
     <Compile Include="PageAdjustPars.xaml.cs">
       <DependentUpon>PageAdjustPars.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SandboxDataSet.cs">
-      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="SandboxDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
