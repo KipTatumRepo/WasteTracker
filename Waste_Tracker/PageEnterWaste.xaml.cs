@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
-
+using System.Windows.Controls.Primitives;
 
 namespace Waste_Tracker
 {
@@ -48,10 +48,12 @@ namespace Waste_Tracker
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+
             try
-            { 
-                SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-                SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            {
+
                 da.Update(ds.WasteTrackerDB);
                 MessageBox.Show("Leftover values have been updated");
             }
