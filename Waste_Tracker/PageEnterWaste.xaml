@@ -69,17 +69,12 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
 
-
-
         <Button Content="Save" Grid.Column="1" HorizontalAlignment="Center" Margin="135,92,24,0" Grid.Row="5" VerticalAlignment="Top" Width="108" Click="Button_Click" Height="32"/>
         <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="3" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                   Margin="5,0,5,0" Grid.Row="4" Grid.RowSpan="1" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False"
                   AlternatingRowBackground="AliceBlue" SelectionUnit="Cell" SelectionMode="Single">
             <!--hidden columns-->
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="pIDColumn" Binding="{Binding PID}" Header="PID" HeaderStyle="{StaticResource CenterGridHeader}" 
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width="*"
-                                    CanUserSort="False" Visibility="Hidden"/>
                 <DataGridTemplateColumn x:Name="dateColumn" Header="Date" Width="SizeToHeader" Visibility="Hidden">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
@@ -87,11 +82,11 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-            <!--End hidden columns-->
-                
                 <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width=".15*"
-                                    CanUserSort="False"/>
+                                    CanUserSort="False" Visibility="Hidden"/>
+            <!--End hidden columns-->
+                
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width="*"
                                     CanUserSort="False"/>

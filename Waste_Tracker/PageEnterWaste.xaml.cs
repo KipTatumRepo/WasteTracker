@@ -14,6 +14,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Data.Entity;
 using System.Windows.Controls.Primitives;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace Waste_Tracker
 {
@@ -50,11 +52,32 @@ namespace Waste_Tracker
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            DateTime? Date = dateDatePicker.SelectedDate;
 
             try
             {
+                //use SQL command to insert into DB
+                SqlConnection Conn;
+                SqlCommand Cmd;
+                Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+                Conn.Open();
 
-                da.Update(ds.WasteTrackerDB);
+                //iterate over each row of DataGrid and insert into DB
+                foreach(DataRow dr in ds.WasteTrackerDB.Rows)
+                {
+                    string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date)";
+                    Cmd = new SqlCommand(sqlString, Conn);
+                    Cmd.Parameters.AddWithValue("@StationId", dr[1]);
+                    Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
+                    Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
+                    Cmd.Parameters.AddWithValue("@Par", dr[4]);
+                    Cmd.Parameters.AddWithValue("@UoM", dr[5]);
+                    Cmd.Parameters.AddWithValue("@Date", Date);
+                    Cmd.ExecuteNonQuery();
+                }
+
+
+                //da.Update(ds.WasteTrackerDB);
                 MessageBox.Show("Leftover values have been updated");
             }
             catch (Exception ex)
@@ -66,6 +89,7 @@ namespace Waste_Tracker
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
