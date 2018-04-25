@@ -25,11 +25,16 @@ namespace Waste_Tracker
 
     public partial class PageEnterWaste : Page
     {
+        SqlConnection Conn;
+        SqlCommand Cmd;
+
         
+            
+       
         public PageEnterWaste()
         {
             InitializeComponent();
-
+            
             try
             {
                 //Load database 
@@ -57,9 +62,8 @@ namespace Waste_Tracker
             try
             {
                 //use SQL command to insert into DB
-                SqlConnection Conn;
-                SqlCommand Cmd;
                 Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+
                 Conn.Open();
 
                 //iterate over each row of DataGrid and insert into DB
@@ -76,14 +80,13 @@ namespace Waste_Tracker
                     Cmd.ExecuteNonQuery();
                 }
 
-
-                //da.Update(ds.WasteTrackerDB);
-                MessageBox.Show("Leftover values have been updated");
+                MessageBox.Show("Leftover values have been added");
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
+            Conn.Close();
         }
 
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -97,6 +100,33 @@ namespace Waste_Tracker
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation(ds.WasteTrackerDB, item);
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+
+            DateTime? Date = dateDatePicker.SelectedDate;
+
+            Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+            Conn.Open();
+
+            //iterate over datagrid, update values
+            foreach (DataRow dr in ds.WasteTrackerDB.Rows)
+            {
+                string sqlString = "UPDATE WasteTrackerDB SET LeftOver = @LeftOver WHERE MenuItem = @MenuItem AND Date = @Date";
+                Cmd = new SqlCommand(sqlString, Conn);
+                Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
+                Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
+                Cmd.Parameters.AddWithValue("@Date", Date);
+                Cmd.ExecuteNonQuery();
+                
+            }
+            MessageBox.Show("Leftover values have been updated");
+            Conn.Close();
+        }
+
+        
     }
 
 }
