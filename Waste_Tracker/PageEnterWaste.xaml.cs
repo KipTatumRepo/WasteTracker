@@ -77,9 +77,22 @@ namespace Waste_Tracker
                     Cmd.Parameters.AddWithValue("@Par", dr[4]);
                     Cmd.Parameters.AddWithValue("@UoM", dr[5]);
                     Cmd.Parameters.AddWithValue("@Date", Date);
-                    Cmd.ExecuteNonQuery();
-                }
 
+                    string leftOver = dr[3].ToString();
+                    decimal LeftOver;
+                    LeftOver = decimal.Parse(leftOver);
+
+                    if (LeftOver < 0)
+                    {
+                        MessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
+                        return;
+                    }
+                    else
+                    {
+                        Cmd.ExecuteNonQuery();
+                    }
+                }
+                
                 MessageBox.Show("Leftover values have been added");
             }
             catch (Exception ex)

@@ -82,6 +82,8 @@
                             <Setter Property="Background" Value="Red"/>
                             <Setter Property="ToolTip" Value="Seriously?!?! Have you ever seen a Left Over amount that isn't a number???"/>
                         </Trigger>
+                       
+                        
                     </Style.Triggers>
                 </Style>
                 <!--<Style x:Key="errorStyle" TargetType="{x:Type TextBox}">
