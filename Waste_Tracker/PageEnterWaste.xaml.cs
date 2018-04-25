@@ -122,6 +122,7 @@ namespace Waste_Tracker
                 Cmd.ExecuteNonQuery();
                 
             }
+
             MessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
