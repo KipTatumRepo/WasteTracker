@@ -28,19 +28,19 @@ namespace Waste_Tracker
         private void EnterWaste_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
-                new Uri("/PageEnterWaste.xaml", UriKind.Relative));
+                new Uri("Pages/PageEnterWaste.xaml", UriKind.Relative));
         }
 
         private void AdjustPars_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
-                new Uri("/PageAdjustPars.xaml", UriKind.Relative));
+                new Uri("Pages/PageAdjustPars.xaml", UriKind.Relative));
         }
 
         private void AddItem_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
-                new Uri("/PageAddItems.xaml", UriKind.Relative));
+                new Uri("Pages/PageAddItems.xaml", UriKind.Relative));
         }
     }
 }

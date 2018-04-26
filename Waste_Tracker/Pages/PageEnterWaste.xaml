@@ -12,7 +12,6 @@
         <local:SandboxDataSet x:Key="sandboxDataSet"/>
         <CollectionViewSource x:Key="wasteTrackerStationsViewSource" Source="{Binding WasteTrackerStations, Source={StaticResource sandboxDataSet}}"/>
         <CollectionViewSource x:Key="wasteTrackerDBViewSource" Source="{Binding WasteTrackerDB, Source={StaticResource sandboxDataSet}}"/>
-
         <Style x:Key="CenterGridHeader" TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="FontSize" Value="25" />
@@ -26,14 +25,12 @@
         <Style x:Key="CenterCellText" TargetType="DataGridCell">
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
         </Style>
-
         <Style TargetType="Page">
             <Setter Property="Background"
                     Value="OldLace" />
             <Setter Property="FontFamily"
                     Value="SegoeUIEmoji" />
         </Style>
-
     </Page.Resources>
 
     <Grid Background="OldLace" DataContext="{StaticResource wasteTrackerDBViewSource}">
@@ -73,6 +70,20 @@
         <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="3" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                   Margin="5,0,5,0" Grid.Row="4" Grid.RowSpan="1" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False"
                   AlternatingRowBackground="AliceBlue" SelectionUnit="Cell" SelectionMode="Single">
+            <DataGrid.Resources>
+                <Style x:Key="errorStyle" TargetType="{x:Type TextBox}">
+                    <Style.Triggers>
+                        <Trigger Property="Validation.HasError" Value="True">
+                            <Setter Property="Background" Value="Red"/>
+                            <Setter Property="ToolTip" Value="{Binding RelativeSource={RelativeSource Self},
+                                Path=(Validation.Errors)[0].ErrorContent}"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DataGrid.Resources>
+            <DataGrid.RowValidationRules>
+                <local:PositiveNumberInput ValidationStep="UpdatedValue" />
+            </DataGrid.RowValidationRules>
             <!--hidden columns-->
             <DataGrid.Columns>
                 <DataGridTemplateColumn x:Name="dateColumn" Header="Date" Width="SizeToHeader" Visibility="Hidden">
@@ -85,8 +96,7 @@
                 <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width=".15*"
                                     CanUserSort="False" Visibility="Hidden"/>
-                <!--End hidden columns-->
-
+            <!--End hidden columns-->
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width="*"
                                     CanUserSort="False"/>
@@ -97,13 +107,11 @@
                 <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width="*"
                                     CanUserSort="False"/>
-                <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}" 
+                <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver, ValidatesOnExceptions=True}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" FontSize="36" Width="*"
-                                    CanUserSort="False"/>
-
+                                    CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Oops I messed up change the Left Over Amount" HorizontalAlignment="Left" Margin="10,106,0,0" Grid.Row="5" VerticalAlignment="Top" Width="291" Grid.ColumnSpan="2" Click="Button_Click_1"/>
-
     </Grid>
 </Page>

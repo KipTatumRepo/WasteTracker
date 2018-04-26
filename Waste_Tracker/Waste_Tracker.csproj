@@ -43,8 +43,10 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -63,6 +65,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\BIMessageBox.xaml.cs">
+      <DependentUpon>BIMessageBox.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
@@ -70,12 +75,13 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="PageAddItems.xaml.cs">
+    <Compile Include="Pages\PageAddItems.xaml.cs">
       <DependentUpon>PageAddItems.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageAdjustPars.xaml.cs">
+    <Compile Include="Pages\PageAdjustPars.xaml.cs">
       <DependentUpon>PageAdjustPars.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\PositiveNumberInput.cs" />
     <Compile Include="SandboxDataSet.cs">
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </Compile>
@@ -84,32 +90,36 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </Compile>
+    <Page Include="Resources\BIMessageBox.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageActionSelection.xaml">
+    <Page Include="Pages\PageActionSelection.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageAddItems.xaml">
+    <Page Include="Pages\PageAddItems.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageAdjustPars.xaml">
+    <Page Include="Pages\PageAdjustPars.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PageEnterWaste.xaml">
+    <Page Include="Pages\PageEnterWaste.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PageActionSelection.xaml.cs">
+    <Compile Include="Pages\PageActionSelection.xaml.cs">
       <DependentUpon>PageActionSelection.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PageEnterWaste.xaml.cs">
+    <Compile Include="Pages\PageEnterWaste.xaml.cs">
       <DependentUpon>PageEnterWaste.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
