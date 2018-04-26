@@ -45,7 +45,7 @@ namespace Waste_Tracker
             }
             catch (Exception ex)
             {
-                WpfMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
 
         }
@@ -83,7 +83,7 @@ namespace Waste_Tracker
 
                         if (LeftOver < 0)
                         {
-                            WpfMessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
+                            BIMessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
                             return;
                         }
                         else
@@ -91,18 +91,18 @@ namespace Waste_Tracker
                             Cmd.ExecuteNonQuery();
                         }
                     }
-                    WpfMessageBox.Show("Leftover values have been added");
+                    BIMessageBox.Show("Leftover values have been added");
                 }
                 catch (Exception ex)
                 {
-                    WpfMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                    BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
                 }
                 //Conn.Close();
             }
             //oops there was no date selected
             else
             {
-                WpfMessageBox.Show("Please Enter a Date");
+                BIMessageBox.Show("Please Enter a Date");
                 return;
             }
             Conn.Close();
@@ -141,7 +141,7 @@ namespace Waste_Tracker
                 Cmd.ExecuteNonQuery();
                 
             }
-            WpfMessageBox.Show("Leftover values have been updated");
+            BIMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
 
