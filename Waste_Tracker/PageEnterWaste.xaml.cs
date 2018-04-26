@@ -28,9 +28,6 @@ namespace Waste_Tracker
         SqlConnection Conn;
         SqlCommand Cmd;
 
-        
-            
-       
         public PageEnterWaste()
         {
             InitializeComponent();
@@ -48,7 +45,7 @@ namespace Waste_Tracker
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                WpfMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
 
         }
@@ -84,7 +81,7 @@ namespace Waste_Tracker
 
                     if (LeftOver < 0)
                     {
-                        MessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
+                        WpfMessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
                         return;
                     }
                     else
@@ -92,12 +89,12 @@ namespace Waste_Tracker
                         Cmd.ExecuteNonQuery();
                     }
                 }
-                
-                MessageBox.Show("Leftover values have been added");
+               
+                WpfMessageBox.Show("Leftover values have been added");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                WpfMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
             Conn.Close();
         }
@@ -136,7 +133,7 @@ namespace Waste_Tracker
                 
             }
 
-            MessageBox.Show("Leftover values have been updated");
+            WpfMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
 
