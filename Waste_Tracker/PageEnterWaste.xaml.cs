@@ -55,46 +55,55 @@ namespace Waste_Tracker
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             DateTime? Date = dateDatePicker.SelectedDate;
-
-            try
+           
+            //if there is a date selected
+            if(Date != null)
             {
-                //use SQL command to insert into DB
-                Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
-
-                Conn.Open();
-
-                //iterate over each row of DataGrid and insert into DB
-                foreach(DataRow dr in ds.WasteTrackerDB.Rows)
+                try
                 {
-                    string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date)";
-                    Cmd = new SqlCommand(sqlString, Conn);
-                    Cmd.Parameters.AddWithValue("@StationId", dr[1]);
-                    Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
-                    Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
-                    Cmd.Parameters.AddWithValue("@Par", dr[4]);
-                    Cmd.Parameters.AddWithValue("@UoM", dr[5]);
-                    Cmd.Parameters.AddWithValue("@Date", Date);
+                    //use SQL command to insert into DB
+                    Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+                    Conn.Open();
 
-                    string leftOver = dr[3].ToString();
-                    decimal LeftOver;
-                    LeftOver = decimal.Parse(leftOver);
+                    //iterate over each row of DataGrid, get values of each cell, and insert into DB
+                    foreach (DataRow dr in ds.WasteTrackerDB.Rows)
+                    {
+                        string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date)";
+                        Cmd = new SqlCommand(sqlString, Conn);
+                        Cmd.Parameters.AddWithValue("@StationId", dr[1]);
+                        Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
+                        Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
+                        Cmd.Parameters.AddWithValue("@Par", dr[4]);
+                        Cmd.Parameters.AddWithValue("@UoM", dr[5]);
+                        Cmd.Parameters.AddWithValue("@Date", Date);
 
-                    if (LeftOver < 0)
-                    {
-                        WpfMessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
-                        return;
+                        string leftOver = dr[3].ToString();
+                        decimal LeftOver;
+                        LeftOver = decimal.Parse(leftOver);
+
+                        if (LeftOver < 0)
+                        {
+                            WpfMessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
+                            return;
+                        }
+                        else
+                        {
+                            Cmd.ExecuteNonQuery();
+                        }
                     }
-                    else
-                    {
-                        Cmd.ExecuteNonQuery();
-                    }
+                    WpfMessageBox.Show("Leftover values have been added");
                 }
-               
-                WpfMessageBox.Show("Leftover values have been added");
+                catch (Exception ex)
+                {
+                    WpfMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                }
+                //Conn.Close();
             }
-            catch (Exception ex)
+            //oops there was no date selected
+            else
             {
-                WpfMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                WpfMessageBox.Show("Please Enter a Date");
+                return;
             }
             Conn.Close();
         }
@@ -132,7 +141,6 @@ namespace Waste_Tracker
                 Cmd.ExecuteNonQuery();
                 
             }
-
             WpfMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
