@@ -8,6 +8,10 @@
             <GradientStop Color="ForestGreen" Offset="0" />
             <GradientStop Color="LightGreen" Offset="1" />
         </LinearGradientBrush>
+        <LinearGradientBrush x:Key="ButtonGradientBrushClicked" StartPoint="0,1" EndPoint="0,0">
+            <GradientStop Color="LawnGreen" Offset="0" />
+            <GradientStop Color="PaleGreen" Offset="1" />
+        </LinearGradientBrush>
         <Style TargetType="{x:Type Button}" >
             <Setter Property="Width" Value="155" />
             <Setter Property="Height" Value="105" />
