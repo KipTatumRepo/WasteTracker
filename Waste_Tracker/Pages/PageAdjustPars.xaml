@@ -58,7 +58,7 @@
                
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Save" Grid.Column="1" HorizontalAlignment="Center" Margin="135,92,24,0" Grid.Row="5" VerticalAlignment="Top" Width="108" Click="Button_Click" Height="32"/>
+        <Button Content="Save" Grid.Column="1" Grid.Row="5" Click="Button_Click" />
 
     </Grid>
 </Page>

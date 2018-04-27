@@ -55,7 +55,7 @@
                 </ItemsPanelTemplate>
             </ComboBox.ItemsPanel>
         </ComboBox>
-        <Button Content="Save" Grid.Column="1" HorizontalAlignment="center" Grid.Row="7" VerticalAlignment="Top" Width="136" Height="37" Click="Button_Click"/>
+        <Button Content="Save" Grid.Column="1" Grid.Row="7" Click="Button_Click"/>
         <Grid x:Name="grid1" DataContext="{StaticResource wasteTrackerDBViewSource}" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.ColumnSpan="1" Grid.RowSpan="5" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
