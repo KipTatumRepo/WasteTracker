@@ -22,11 +22,16 @@
                                Stroke="Transparent" StrokeThickness="5" Fill="{TemplateBinding Background}" RadiusX="20" RadiusY="20" />
                             <DockPanel Name="myContentPresenterDockPanel">
                                 <ContentPresenter x:Name="myContentPresenter" Margin="20" Content="{TemplateBinding  Content}" TextBlock.Foreground="White"
-                                                  HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                
                             </DockPanel>
                         </Grid>
                         <!--what happens at various events-->
                         <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property ="Rectangle.Stroke" TargetName="innerRectangle" Value="LightGreen" />
+                            </Trigger>
+
                             <Trigger Property ="IsPressed" Value ="True">
                                 <Setter TargetName="ButtonGrid" Property="RenderTransform">
                                     <Setter.Value>
