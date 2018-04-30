@@ -24,6 +24,10 @@
             <Setter Property="FontFamily"
                     Value="SegoeUIEmoji" />
         </Style>
+        <Style x:Key="CenterCellTextLocked" TargetType="DataGridCell">
+            <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="FontWeight" Value="UltraLight" />
+        </Style>
         <local:SandboxDataSet x:Key="sandboxDataSet"/>
         <CollectionViewSource x:Key="wasteTrackerStationsViewSource" Source="{Binding WasteTrackerStations, Source={StaticResource sandboxDataSet}}"/>
         <CollectionViewSource x:Key="wasteTrackerDBViewSource" Source="{Binding WasteTrackerDB, Source={StaticResource sandboxDataSet}}"/>
@@ -49,10 +53,11 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
         <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource wasteTrackerDBViewSource}}" 
-                  AlternatingRowBackground="AliceBlue" Background="LemonChiffon" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected">
+                  AlternatingRowBackground="AliceBlue" Background="LemonChiffon" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False" 
+                  SelectionUnit="Cell" SelectionMode="Single">
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" FontSize="36"  IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="currentParColumn" Binding="{Binding Par}" Header="Current Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" FontSize="36" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" FontSize="36"  IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="currentParColumn" Binding="{Binding Par}" Header="Current Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" FontSize="36" IsReadOnly="True"/>
                 <DataGridTextColumn x:Name="newParColumn" Binding="{Binding Par}" Header="New Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" FontSize="36" IsReadOnly="False"/>
                 <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" FontSize="36" IsReadOnly="False"/>
                
