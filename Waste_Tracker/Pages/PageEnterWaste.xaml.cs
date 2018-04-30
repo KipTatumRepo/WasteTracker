@@ -41,13 +41,11 @@ namespace Waste_Tracker
                 CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
                 SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
                 sbda.Fill(ds.WasteTrackerStations);
-
             }
             catch (Exception ex)
             {
                 BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
-
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -117,7 +115,7 @@ namespace Waste_Tracker
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
            
             //fill datagrid with dataset of menu items that match station selection
-            da.FillByStation(ds.WasteTrackerDB, item);
+            da.FillByStation1(ds.WasteTrackerDB, item);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -144,8 +142,5 @@ namespace Waste_Tracker
             BIMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
-
-        
     }
-
 }
