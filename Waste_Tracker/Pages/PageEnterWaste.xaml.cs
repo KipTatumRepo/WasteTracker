@@ -95,7 +95,6 @@ namespace Waste_Tracker
                 {
                     BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
                 }
-                //Conn.Close();
             }
             //oops there was no date selected
             else
@@ -113,9 +112,13 @@ namespace Waste_Tracker
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-           
+            //SandboxDataSetTableAdapters.MenuItemsTableAdapter da = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
+
+
             //fill datagrid with dataset of menu items that match station selection
-            da.FillByStation1(ds.WasteTrackerDB, item);
+            da.FillByStation2(ds.WasteTrackerDB, item);
+                
+            //da.FillByStation(ds.WasteTrackerDB, item);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -137,7 +140,6 @@ namespace Waste_Tracker
                 Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
                 Cmd.Parameters.AddWithValue("@Date", Date);
                 Cmd.ExecuteNonQuery();
-                
             }
             BIMessageBox.Show("Leftover values have been updated");
             Conn.Close();

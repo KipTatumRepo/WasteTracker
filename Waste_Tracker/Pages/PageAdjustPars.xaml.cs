@@ -41,7 +41,7 @@ namespace Waste_Tracker
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
 
             //fill datagrid with dataset of menu items that match station selection
-            da.FillByStation(ds.WasteTrackerDB, item);
+            da.FillByStation2(ds.WasteTrackerDB, item);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
