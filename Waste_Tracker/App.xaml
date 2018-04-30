@@ -31,6 +31,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property ="Rectangle.Stroke" TargetName="innerRectangle" Value="LightGreen" />
                             </Trigger>
+
                             <Trigger Property ="IsPressed" Value ="True">
                                 <Setter TargetName="ButtonGrid" Property="RenderTransform">
                                     <Setter.Value>
