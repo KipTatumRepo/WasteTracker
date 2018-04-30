@@ -6,8 +6,8 @@
         xmlns:local="clr-namespace:Waste_Tracker"
         mc:Ignorable="d"
         Title="MainWindow" 
-        WindowState="Maximized" MinWidth="1024" MinHeight="800"
-        >
+        WindowState="Maximized" MinWidth="1024" MinHeight="800">
+
     <Grid>
         <Frame Source="Pages/PageActionSelection.xaml"/>
     </Grid>
