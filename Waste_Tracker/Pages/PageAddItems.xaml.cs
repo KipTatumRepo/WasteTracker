@@ -50,7 +50,7 @@ namespace Waste_Tracker
 
             try
             { 
-            //Custom Insert Statement
+            //Custom Insert Statement to insert new menu items into MenuItems Table
                 da.InsertQuery(StationId, MenuItem, Par, UoM, IsActive);
                 BIMessageBox.Show("New Menu Item Added");
             }
