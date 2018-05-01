@@ -52,11 +52,8 @@ namespace Waste_Tracker
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
            
-            //SandboxDataSetTableAdapters.MenuItemsTableAdapter mida = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
-
             try
             {
-                
                 Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
                 Conn.Open();
 
@@ -70,10 +67,12 @@ namespace Waste_Tracker
                     Cmd.Parameters.AddWithValue("@Par", dr[2]);
                     Cmd.Parameters.AddWithValue("@UoM", dr[3]);
                     Cmd.Parameters.AddWithValue("@IsActive", dr[4]);
-
+                    
+                    //get par cell for data validation
                     string _par = dr[2].ToString();
                     int par;
                     par = int.Parse(_par);
+
                     if (par < 0)
                     {
                         BIMessageBox.Show("Please a positive number for the Par Amount.");
