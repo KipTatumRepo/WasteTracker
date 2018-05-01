@@ -66,13 +66,14 @@ namespace Waste_Tracker
                     //iterate over each row of DataGrid, get values of each cell, and insert into DB
                     foreach (DataRow dr in ds.WasteTrackerDB.Rows)
                     {
-                        string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date)";
+                        string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date, @IsActive)";
                         Cmd = new SqlCommand(sqlString, Conn);
                         Cmd.Parameters.AddWithValue("@StationId", dr[1]);
                         Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
                         Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
                         Cmd.Parameters.AddWithValue("@Par", dr[4]);
                         Cmd.Parameters.AddWithValue("@UoM", dr[5]);
+                        Cmd.Parameters.AddWithValue("@IsActive", dr[6]);
                         Cmd.Parameters.AddWithValue("@Date", Date);
 
                         string leftOver = dr[3].ToString();
