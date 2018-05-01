@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +22,8 @@ namespace Waste_Tracker
     /// </summary>
     public partial class PageAdjustPars : Page
     {
+        SqlConnection Conn;
+        SqlCommand Cmd;
         public PageAdjustPars()
         {
             InitializeComponent();
@@ -38,26 +42,54 @@ namespace Waste_Tracker
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
-            //SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             SandboxDataSetTableAdapters.MenuItemsTableAdapter mida = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
 
             //fill datagrid with dataset of menu items that match station selection
-            //da.FillByStation2(ds.WasteTrackerDB, item);
             mida.FillByStation(ds.MenuItems, item);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+           
+            //SandboxDataSetTableAdapters.MenuItemsTableAdapter mida = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
+
             try
             {
-                da.Update(ds.WasteTrackerDB);
-                MessageBox.Show("Par level has been updated.");
+                
+                Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+                Conn.Open();
+
+                //iterate over datagrid, update values
+                foreach (DataRow dr in ds.MenuItems.Rows)
+                {
+                    string sqlString = "UPDATE MenuItems SET Par = @Par, UoM = @UoM, IsActive = @IsActive WHERE MenuItem = @MenuItem AND @StationId = StationId";
+                    Cmd = new SqlCommand(sqlString, Conn);
+                    Cmd.Parameters.AddWithValue("@StationId", dr[0]);
+                    Cmd.Parameters.AddWithValue("@MenuItem", dr[1]);
+                    Cmd.Parameters.AddWithValue("@Par", dr[2]);
+                    Cmd.Parameters.AddWithValue("@UoM", dr[3]);
+                    Cmd.Parameters.AddWithValue("@IsActive", dr[4]);
+
+                    string _par = dr[2].ToString();
+                    int par;
+                    par = int.Parse(_par);
+                    if (par < 0)
+                    {
+                        BIMessageBox.Show("Please a positive number for the Par Amount.");
+                        return;
+                    }
+                    else
+                    {
+                        Cmd.ExecuteNonQuery();
+                    }
+                }
+                Conn.Close();
+                BIMessageBox.Show("Par level has been updated.");
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
         }
     }
