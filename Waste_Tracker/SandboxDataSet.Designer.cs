@@ -2319,13 +2319,14 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date, IsActive FROM WasteTr
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[2].Connection = this.Connection;
-            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[MenuItems] ([StationId], [MenuItem],  [Par], [UoM]) VALUES ( @" +
-                "StationId, @MenuItem,  @Par, @UoM)";
+            this._commandCollection[2].CommandText = "INSERT INTO [dbo].[MenuItems] ([StationId], [MenuItem],  [Par], [UoM], [IsActive]" +
+                ") VALUES ( @StationId, @MenuItem,  @Par, @UoM, @IsActive)";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@StationId", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MenuItem", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "MenuItem", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Par", global::System.Data.SqlDbType.Decimal, 9, global::System.Data.ParameterDirection.Input, 18, 0, "Par", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@UoM", global::System.Data.SqlDbType.VarChar, 100, global::System.Data.ParameterDirection.Input, 0, 0, "UoM", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsActive", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "IsActive", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = @"UPDATE [dbo].[WasteTrackerDB] SET [MenuItem] = @MenuItem, [LeftOver] = @LeftOverWHERE (((@IsNull_MenuItem = 1 AND [MenuItem] IS NULL) OR ([MenuItem] = @Original_MenuItem)) AND ((@IsNull_LeftOver = 1 AND [LeftOver] IS NULL) OR ([LeftOver] = @Original_LeftOver)));
@@ -2689,7 +2690,7 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
-        public virtual int InsertQuery(global::System.Nullable<int> StationId, string MenuItem, global::System.Nullable<decimal> Par, string UoM) {
+        public virtual int InsertQuery(global::System.Nullable<int> StationId, string MenuItem, global::System.Nullable<decimal> Par, string UoM, global::System.Nullable<int> IsActive) {
             global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[2];
             if ((StationId.HasValue == true)) {
                 command.Parameters[0].Value = ((int)(StationId.Value));
@@ -2714,6 +2715,12 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
             }
             else {
                 command.Parameters[3].Value = ((string)(UoM));
+            }
+            if ((IsActive.HasValue == true)) {
+                command.Parameters[4].Value = ((int)(IsActive.Value));
+            }
+            else {
+                command.Parameters[4].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
             if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
