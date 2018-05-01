@@ -38,10 +38,12 @@ namespace Waste_Tracker
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            //SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            SandboxDataSetTableAdapters.MenuItemsTableAdapter mida = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
 
             //fill datagrid with dataset of menu items that match station selection
-            da.FillByStation2(ds.WasteTrackerDB, item);
+            //da.FillByStation2(ds.WasteTrackerDB, item);
+            mida.FillByStation(ds.MenuItems, item);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

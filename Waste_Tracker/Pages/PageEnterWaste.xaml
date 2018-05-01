@@ -93,6 +93,13 @@
                 <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width=".15*"
                                     CanUserSort="False" Visibility="Hidden"/>
+                <DataGridTemplateColumn Header="Active" HeaderStyle="{StaticResource CenterGridHeader}" Visibility="Hidden" >
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="{Binding IsActive, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
     <!--End hidden columns-->
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" FontSize="36" Width="*"
@@ -106,6 +113,7 @@
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver, ValidatesOnExceptions=True}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" FontSize="36" Width="*"
                                     CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
+                
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Update Values" Margin="11,92,0,0" Grid.Row="5" Click="Button_Click_1" />
