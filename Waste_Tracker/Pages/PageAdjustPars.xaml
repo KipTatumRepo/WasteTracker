@@ -9,25 +9,6 @@
       Title="PageAdjustPars">
 
     <Page.Resources>
-        <Style x:Key="CenterGridHeader" TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="Background" Value="LemonChiffon" />
-            <Setter Property="BorderBrush" Value="Black" />
-        </Style>
-        <Style x:Key="CenterCellText" TargetType="DataGridCell">
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-        </Style>
-        <Style TargetType="Page">
-            <Setter Property="Background"
-                    Value="OldLace" />
-            <Setter Property="FontFamily"
-                    Value="SegoeUIEmoji" />
-        </Style>
-        <Style x:Key="CenterCellTextLocked" TargetType="DataGridCell">
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="FontWeight" Value="UltraLight" />
-        </Style>
         <Style x:Key="dgCombobox" TargetType="ComboBox">
             <Setter Property="FontSize" Value="36" />
             <Setter Property="HorizontalAlignment" Value="Right" />
@@ -80,10 +61,10 @@
                 <local:PositiveNumberInput ValidationStep="UpdatedValue" />
             </DataGrid.RowValidationRules>
             <DataGrid.Columns>
-                <DataGridTextColumn x:Name="stationIdColum" Binding="{Binding StationId}" Header="Station Id" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" FontSize="36"  IsReadOnly="True" Visibility="Hidden"/>
-                <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" FontSize="36"  IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="currentParColumn" Binding="{Binding Par}" Header="Current Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" FontSize="36" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="newParColumn" Binding="{Binding Par}" Header="New Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" FontSize="36" IsReadOnly="False" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn x:Name="stationIdColum" Binding="{Binding StationId}" Header="Station Id" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" Visibility="Hidden"/>
+                <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="currentParColumn" Binding="{Binding Par}" Header="Current Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="newParColumn" Binding="{Binding Par}" Header="New Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridComboBoxColumn x:Name="uoMColumn" Header="UoM" HeaderStyle="{StaticResource CenterGridHeader}" EditingElementStyle="{StaticResource dgCombobox}"
                                         IsReadOnly="False" ItemsSource="{DynamicResource UoMSource}" DisplayMemberPath="Name" ElementStyle="{StaticResource dgComboboxCell}"
                                         SelectedValueBinding="{Binding UoM, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="Name" >

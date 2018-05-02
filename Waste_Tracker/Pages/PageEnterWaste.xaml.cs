@@ -66,15 +66,16 @@ namespace Waste_Tracker
                     //iterate over each row of DataGrid, get values of each cell, and insert into DB
                     foreach (DataRow dr in ds.WasteTrackerDB.Rows)
                     {
-                        string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date, @IsActive)";
+                        string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date, @IsActive, @Ordered)";
                         Cmd = new SqlCommand(sqlString, Conn);
                         Cmd.Parameters.AddWithValue("@StationId", dr[1]);
                         Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
                         Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
                         Cmd.Parameters.AddWithValue("@Par", dr[4]);
                         Cmd.Parameters.AddWithValue("@UoM", dr[5]);
-                        Cmd.Parameters.AddWithValue("@IsActive", dr[6]);
                         Cmd.Parameters.AddWithValue("@Date", Date);
+                        Cmd.Parameters.AddWithValue("@IsActive", 1);
+                        Cmd.Parameters.AddWithValue("@Ordered", dr[8]);
 
                         string leftOver = dr[3].ToString();
                         decimal LeftOver;
@@ -119,7 +120,7 @@ namespace Waste_Tracker
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation2(ds.WasteTrackerDB, item);
                 
-            //da.FillByStation(ds.WasteTrackerDB, item);
+            //da.FillByStation(ds.MenuItems, item);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

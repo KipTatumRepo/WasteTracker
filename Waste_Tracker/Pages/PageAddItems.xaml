@@ -9,21 +9,6 @@
       Title="PageAddItems">
 
     <Page.Resources>
-        <Style x:Key="CenterGridHeader" TargetType="DataGridColumnHeader">
-            <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="25" />
-            <Setter Property="Background" Value="LemonChiffon" />
-            <Setter Property="BorderBrush" Value="Black" />
-        </Style>
-        <Style x:Key="CenterCellText" TargetType="DataGridCell">
-            <Setter Property="TextBlock.TextAlignment" Value="Center" />
-        </Style>
-        <Style TargetType="Page">
-            <Setter Property="Background"
-                    Value="OldLace" />
-            <Setter Property="FontFamily"
-                    Value="SegoeUIEmoji" />
-        </Style>
         <local:SandboxDataSet x:Key="sandboxDataSet"/>
         <CollectionViewSource x:Key="wasteTrackerStationsViewSource" Source="{Binding WasteTrackerStations, Source={StaticResource sandboxDataSet}}"/>
         <CollectionViewSource x:Key="wasteTrackerDBViewSource" Source="{Binding WasteTrackerDB, Source={StaticResource sandboxDataSet}}"/>
