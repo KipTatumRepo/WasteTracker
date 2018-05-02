@@ -42,5 +42,11 @@ namespace Waste_Tracker
             NavigationService.Navigate(
                 new Uri("Pages/PageAddItems.xaml", UriKind.Relative));
         }
+
+        private void ViewReports_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(
+                new Uri("Pages/PageViewReports.xaml", UriKind.Relative));
+        }
     }
 }
