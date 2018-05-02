@@ -45,5 +45,11 @@
             </Setter>
         </Style>
         <!--End Button Styling-->
+        <local:NameCollection x:Key="UoMSource">
+            <local:SimpleUoM Name="ea" />
+            <local:SimpleUoM Name="#" />
+            <local:SimpleUoM Name="qt" />
+            <local:SimpleUoM Name="gal" />
+        </local:NameCollection>
     </Application.Resources>
 </Application>

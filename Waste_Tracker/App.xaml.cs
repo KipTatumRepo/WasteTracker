@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 
 namespace Waste_Tracker
 {
@@ -13,5 +14,15 @@ namespace Waste_Tracker
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            EventManager.RegisterClassHandler(typeof(DataGrid), DataGrid.PreviewMouseLeftButtonDownEvent,
+                new RoutedEventHandler(EventHelper.DataGridPreviewMouseLeftButtonDownEvent));
+
+        }
     }
+
+    
 }
