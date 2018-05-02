@@ -65,6 +65,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\EventHelper.cs" />
+    <Compile Include="Resources\NameCollection.cs" />
     <Compile Include="Resources\BIMessageBox.xaml.cs">
       <DependentUpon>BIMessageBox.xaml</DependentUpon>
     </Compile>
@@ -82,6 +84,7 @@
       <DependentUpon>PageAdjustPars.xaml</DependentUpon>
     </Compile>
     <Compile Include="Resources\PositiveNumberInput.cs" />
+    <Compile Include="Resources\SimpleUoM.cs" />
     <Compile Include="SandboxDataSet.cs">
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </Compile>
