@@ -57,9 +57,7 @@ namespace Waste_Tracker.Pages
             
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation3(ds.WasteTrackerDB, item, date);
-
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -94,8 +92,6 @@ namespace Waste_Tracker.Pages
                 i++;
             }
             xla.Visible = true;
-            
-
         }
     }
 }

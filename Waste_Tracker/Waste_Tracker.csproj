@@ -71,8 +71,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="DataGridExcelTools.cs" />
-    <Compile Include="ExportManager.cs" />
     <Compile Include="Pages\PageViewReports.xaml.cs">
       <DependentUpon>PageViewReports.xaml</DependentUpon>
     </Compile>

@@ -65,12 +65,17 @@
         </Style>
         <Style x:Key="CenterCellText" TargetType="{x:Type DataGridCell}">
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
+            <Setter Property="FontSize" Value="36" />
         </Style>
         <Style TargetType="{x:Type Page}">
             <Setter Property="Background"
                     Value="OldLace" />
             <Setter Property="FontFamily"
                     Value="SegoeUIEmoji" />
+        </Style>
+        <Style TargetType="{x:Type ComboBox}">
+            <Setter Property="Width"
+                    Value="400" />
         </Style>
     </Application.Resources>
 </Application>
