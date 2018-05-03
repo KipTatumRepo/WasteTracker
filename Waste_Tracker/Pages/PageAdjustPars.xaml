@@ -45,7 +45,7 @@
         </ComboBox>
         <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource wasteTrackerMIViewSource}}" 
                   AlternatingRowBackground="AliceBlue" Background="LemonChiffon" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False" 
-                  SelectionUnit="Cell" SelectionMode="Single">
+                  SelectionUnit="Cell" SelectionMode="Single" CanUserAddRows="False">
             <DataGrid.Resources>
                 <Style x:Key="errorStyle" TargetType="{x:Type TextBox}">
                     <Style.Triggers>
