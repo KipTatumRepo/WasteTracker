@@ -35,7 +35,7 @@
         <TextBlock Grid.Row="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" Margin="25,5,25,5"  />
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Adjust Par Level"  Height="50" Margin="25,5,25,5"  />
         <TextBlock Grid.Row="2" Text="Select Station" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="top" Margin="25,5,25,5" />
-        <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding}" Margin="381,27,401,11" Grid.Row="3" SelectedValuePath="StationId" Width="300" Height="42"
+        <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding}" Margin="381,27,401,11" Grid.Row="3" SelectedValuePath="StationId" Height="42"
                   HorizontalAlignment="Center" FontSize="30" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -63,8 +63,8 @@
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="stationIdColum" Binding="{Binding StationId}" Header="Station Id" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" Visibility="Hidden"/>
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="currentParColumn" Binding="{Binding Par}" Header="Current Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="newParColumn" Binding="{Binding Par}" Header="New Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" EditingElementStyle="{StaticResource errorStyle}"/>
+                <DataGridTextColumn x:Name="currentParColumn" Binding="{Binding Par}" Header="Current Par" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"  CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="newParColumn" Binding="{Binding Par}" Header="New Par" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridComboBoxColumn x:Name="uoMColumn" Header="UoM" HeaderStyle="{StaticResource CenterGridHeader}" EditingElementStyle="{StaticResource dgCombobox}"
                                         IsReadOnly="False" ItemsSource="{DynamicResource UoMSource}" DisplayMemberPath="Name" ElementStyle="{StaticResource dgComboboxCell}"
                                         SelectedValueBinding="{Binding UoM, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" SelectedValuePath="Name" >

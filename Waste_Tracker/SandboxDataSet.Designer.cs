@@ -2087,8 +2087,8 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[1].Connection = this.Connection;
-            this._commandCollection[1].CommandText = "SELECT StationId, MenuItem, Par, Uom FROM dbo.MenuItems d1 WHERE StationId = @ite" +
-                "m AND IsActive = 1\r\n";
+            this._commandCollection[1].CommandText = "SELECT StationId, MenuItem, Par, Uom, IsActive FROM dbo.MenuItems d1 WHERE Statio" +
+                "nId = @item AND IsActive = 1\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }

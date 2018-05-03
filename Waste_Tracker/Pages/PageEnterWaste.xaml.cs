@@ -81,7 +81,11 @@ namespace Waste_Tracker
                         decimal LeftOver;
                         LeftOver = decimal.Parse(leftOver);
 
-                        if (LeftOver < 0)
+                        string ordered = dr[8].ToString();
+                        int Ordered;
+                        Ordered = int.Parse(ordered);
+
+                        if (LeftOver < 0 || Ordered < 0 )
                         {
                             BIMessageBox.Show("Seriously?!?! Have you ever seen a Left Over value that is less than 0?");
                             return;

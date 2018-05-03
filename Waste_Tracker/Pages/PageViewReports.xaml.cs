@@ -14,13 +14,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
+using System.Windows.Forms;
+using System.IO;
 
 namespace Waste_Tracker.Pages
 {
     /// <summary>
     /// Interaction logic for PageViewReports.xaml
     /// </summary>
-    public partial class PageViewReports : Page
+    public partial class PageViewReports 
     {
         
         public PageViewReports()
@@ -53,7 +57,41 @@ namespace Waste_Tracker.Pages
             
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation3(ds.WasteTrackerDB, item, date);
+        }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            //create new excel application
+            Microsoft.Office.Interop.Excel.Application xla = new Microsoft.Office.Interop.Excel.Application();
+            //create workbook and worksheet
+            Workbook wb = xla.Workbooks.Add(XlSheetType.xlWorksheet);
+            Worksheet ws = (Worksheet)xla.ActiveSheet;
+
+            //start at row 2 row 1 is the header
+            int i = 2;
+
+            //create header
+            ws.Range["A1"].Cells.ColumnWidth = 24;
+            ws.Range["A1"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
+            ws.Range["A1"].Value = "Menu Item";
+            ws.Range["B1"].Cells.ColumnWidth = 24;
+            ws.Range["B1"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["B1"].Value = "Percentage of Consumed";
+            ws.Range["C1"].Cells.ColumnWidth = 24;
+            ws.Range["C1"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["C1"].Value = "Percentage of Waste";
+
+            //iterate through datagrid and put into excel doc
+            foreach (DataRow dr in ds.WasteTrackerDB.Rows)
+            {
+               
+                ws.Range["A"+i].Value = dr[2];
+                ws.Range["B"+i].Value = dr[9];
+                ws.Range["C"+i].Value = dr[10];
+                i++;
+            }
+            xla.Visible = true;
         }
     }
 }
