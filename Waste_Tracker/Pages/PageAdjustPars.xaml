@@ -25,12 +25,12 @@
     </Page.Resources>
     <Grid Background="OldLace" DataContext="{StaticResource wasteTrackerStationsViewSource}">
         <Grid.RowDefinitions>
-            <RowDefinition Height=".15*" />
             <RowDefinition Height=".15*"/>
-            <RowDefinition Height=".2*"/>
-            <RowDefinition Height=".25*"/>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".15*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition />
+            <RowDefinition Height=".25*"/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Row="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" Margin="25,5,25,5"  />
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Adjust Par Level"  Height="50" Margin="25,5,25,5"  />
@@ -78,6 +78,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Save" Grid.Column="1" Grid.Row="5" Click="Button_Click" />
+        <Button Content="Save" Grid.Row="5" Click="Button_Click" Style="{StaticResource Buttons}"/>
     </Grid>
 </Page>

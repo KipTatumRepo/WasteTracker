@@ -9,7 +9,7 @@
             <GradientStop Color="ForestGreen" Offset="0" />
             <GradientStop Color="LightGreen" Offset="1" />
         </LinearGradientBrush>
-        <Style TargetType="{x:Type Button}" >
+        <Style x:Key="Buttons" TargetType="{x:Type Button}" >
             <Setter Property="Width" Value="155" />
             <Setter Property="Height" Value="105" />
             <Setter Property="Background" Value="{StaticResource ButtonGradientBrush}" />
@@ -23,7 +23,6 @@
                             <DockPanel Name="myContentPresenterDockPanel">
                                 <ContentPresenter x:Name="myContentPresenter" Margin="20" Content="{TemplateBinding  Content}" TextBlock.Foreground="White"
                                                   HorizontalAlignment="Center" VerticalAlignment="Center" />
-                                
                             </DockPanel>
                         </Grid>
                         <!--what happens at various events-->
@@ -31,7 +30,6 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter Property ="Rectangle.Stroke" TargetName="innerRectangle" Value="LightGreen" />
                             </Trigger>
-
                             <Trigger Property ="IsPressed" Value ="True">
                                 <Setter TargetName="ButtonGrid" Property="RenderTransform">
                                     <Setter.Value>
@@ -51,7 +49,7 @@
             <local:SimpleUoM Name="qt" />
             <local:SimpleUoM Name="gal" />
         </local:NameCollection>
-
+        <!-- Data Grid Styling -->
         <Style x:Key="CenterGridHeader" TargetType="{x:Type DataGridColumnHeader}">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
             <Setter Property="FontSize" Value="25" />
@@ -76,6 +74,15 @@
         <Style TargetType="{x:Type ComboBox}">
             <Setter Property="Width"
                     Value="400" />
+        </Style>
+        <!-- End Data Grid Styling -->
+        <!-- Date Picker Styling -->
+        <Style x:Key="datePicker" TargetType="{x:Type DatePicker}">
+            <Setter Property="Template" >
+                <Setter.Value>
+                            <Button x:Name="PART_Button" VerticalAlignment="Top" />
+                </Setter.Value>
+            </Setter>
         </Style>
     </Application.Resources>
 </Application>

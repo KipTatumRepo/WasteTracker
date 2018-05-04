@@ -2080,7 +2080,7 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[3];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
             this._commandCollection[0].CommandText = "SELECT StationId, MenuItem, Par, UoM, IsActive FROM dbo.MenuItems";
@@ -2091,6 +2091,12 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
                 "nId = @item AND IsActive = 1\r\n";
             this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[1].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[2].Connection = this.Connection;
+            this._commandCollection[2].CommandText = "SELECT StationId, MenuItem, Par, Uom, IsActive FROM dbo.MenuItems d1 WHERE Statio" +
+                "nId = @item \r\n";
+            this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2142,6 +2148,42 @@ namespace Waste_Tracker.SandboxDataSetTableAdapters {
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
         public virtual SandboxDataSet.MenuItemsDataTable GetDataByStation(global::System.Nullable<int> item) {
             this.Adapter.SelectCommand = this.CommandCollection[1];
+            if ((item.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(item.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            SandboxDataSet.MenuItemsDataTable dataTable = new SandboxDataSet.MenuItemsDataTable();
+            this.Adapter.Fill(dataTable);
+            return dataTable;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
+        public virtual int FillByStationAll(SandboxDataSet.MenuItemsDataTable dataTable, global::System.Nullable<int> item) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
+            if ((item.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[0].Value = ((int)(item.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[0].Value = global::System.DBNull.Value;
+            }
+            if ((this.ClearBeforeFill == true)) {
+                dataTable.Clear();
+            }
+            int returnValue = this.Adapter.Fill(dataTable);
+            return returnValue;
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
+        public virtual SandboxDataSet.MenuItemsDataTable GetDataByStationAll(global::System.Nullable<int> item) {
+            this.Adapter.SelectCommand = this.CommandCollection[2];
             if ((item.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[0].Value = ((int)(item.Value));
             }

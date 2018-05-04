@@ -52,11 +52,20 @@ namespace Waste_Tracker.Pages
 
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
+            DateTime? Date = dateDatePicker.SelectedDate;
             string date = dateDatePicker.SelectedDate.ToString();
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             
-            //fill datagrid with dataset of menu items that match station selection
-            da.FillByStation3(ds.WasteTrackerDB, item, date);
+            //fill datagrid with dataset of menu items that match station selection and date
+            if(Date == null)
+            {
+                BIMessageBox.Show("Please Select a Date");
+                return;
+            }
+            else
+            {
+                da.FillByStation3(ds.WasteTrackerDB, item, date);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -68,19 +77,21 @@ namespace Waste_Tracker.Pages
             Workbook wb = xla.Workbooks.Add(XlSheetType.xlWorksheet);
             Worksheet ws = (Worksheet)xla.ActiveSheet;
 
-            //start at row 2 row 1 is the header
-            int i = 2;
+            //start at row 4 row 1 is the Station, row 2 is date, row 3 is header
+            int i = 4;
 
             //create header
-            ws.Range["A1"].Cells.ColumnWidth = 24;
-            ws.Range["A1"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
-            ws.Range["A1"].Value = "Menu Item";
-            ws.Range["B1"].Cells.ColumnWidth = 24;
-            ws.Range["B1"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["B1"].Value = "Percentage of Consumed";
-            ws.Range["C1"].Cells.ColumnWidth = 24;
-            ws.Range["C1"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["C1"].Value = "Percentage of Waste";
+            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.ToString(); 
+            ws.Range["A2"].Cells.Value = dateDatePicker.SelectedDate.ToString();
+            ws.Range["A3"].Cells.ColumnWidth = 24;
+            ws.Range["A3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
+            ws.Range["A3"].Value = "Menu Item";
+            ws.Range["B3"].Cells.ColumnWidth = 24;
+            ws.Range["B3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["B3"].Value = "Percentage of Consumed";
+            ws.Range["C3"].Cells.ColumnWidth = 24;
+            ws.Range["C3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["C3"].Value = "Percentage of Waste";
 
             //iterate through datagrid and put into excel doc
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)

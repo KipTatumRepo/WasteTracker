@@ -33,7 +33,7 @@
         <!-- Select Station and Date -->
         <TextBlock Grid.Row="2" Grid.Column="0" Text="Station" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="top" Height="40" Margin="104,0" Width="92" />
         <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" 
-                  HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="400" Height="42" FontSize="30" 
+                  HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="400" Height="51" FontSize="30" 
                    Margin="0,0,0,30"  Grid.Column="0" Grid.Row="3" SelectedValuePath="StationId" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -42,8 +42,8 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
         <TextBlock Grid.Row="2" Grid.Column="2" Text="Date" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="119,0" Width="62" />
-        <DatePicker x:Name="dateDatePicker" Grid.Row="3" Grid.Column="2" FontSize="12" Background="LemonChiffon"
-                     Margin="0,0,0,30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="400" Height="59" />
+        <DatePicker x:Name="dateDatePicker" Grid.Row="3" Grid.Column="2" FontSize="36" Background="LemonChiffon" 
+                     Margin="0,0,0,30" HorizontalAlignment="Center" VerticalAlignment="Center" Width="400" Height="51" Grid.ColumnSpan="2" />
         <!-- End Select Station and Date -->
         <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" Grid.ColumnSpan="3" EnableRowVirtualization="True" ItemsSource="{Binding}" 
                   Margin="5,0,5,0" Grid.Row="4" Grid.RowSpan="1" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False"
@@ -99,7 +99,16 @@
                                     CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Update Values"  Grid.Row="5" Click="Button_Click_1" />
-        <Button Content="Save" Grid.Column="2"  Grid.Row="5" Click="Button_Click" />
+        <Button Content="Update Values"  Grid.Row="5" Click="Button_Click_1" Style="{StaticResource Buttons}"/>
+        <Button Content="Save" Grid.Column="2"  Grid.Row="5" Click="Button_Click" Style="{StaticResource Buttons}"/>
+        <Grid x:Name="grid1" Grid.Column="2" HorizontalAlignment="Left" Margin="129.067,38,0,0" Grid.Row="3" VerticalAlignment="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+        </Grid>
     </Grid>
 </Page>

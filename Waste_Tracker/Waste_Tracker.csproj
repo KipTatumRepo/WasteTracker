@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\PageActivateItem.xaml.cs">
+      <DependentUpon>PageActivateItem.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageViewReports.xaml.cs">
       <DependentUpon>PageViewReports.xaml</DependentUpon>
     </Compile>
@@ -94,11 +97,18 @@
     </Compile>
     <Compile Include="Resources\PositiveNumberInput.cs" />
     <Compile Include="Resources\SimpleUoM.cs" />
+    <Compile Include="SandboxDataSet.cs">
+      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SandboxDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </Compile>
+    <Page Include="Pages\PageActivateItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\PageViewReports.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

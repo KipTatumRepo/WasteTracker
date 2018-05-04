@@ -118,13 +118,9 @@ namespace Waste_Tracker
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-            //SandboxDataSetTableAdapters.MenuItemsTableAdapter da = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
-
-
+           
             //fill datagrid with dataset of menu items that match station selection
             da.FillByStation2(ds.WasteTrackerDB, item);
-                
-            //da.FillByStation(ds.MenuItems, item);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
