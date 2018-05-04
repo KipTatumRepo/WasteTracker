@@ -30,8 +30,8 @@
         <TextBlock Grid.Row="0" Grid.Column="1" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" Margin="15.6,0,15.4,0" Grid.RowSpan="2" Width="469"  />
         <TextBlock Grid.Row="1" Grid.Column="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Add Menu Item" Height="50" Margin="146.6,0.2,146.4,0" Grid.RowSpan="2" Width="207"   />
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Select Station" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="top" Height="36" Margin="160.6,0.8,160.4,0" Grid.RowSpan="2" Width="179"   />
-        <ComboBox x:Name="wasteTrackerStationsComboBox" Grid.Column="1" DisplayMemberPath="StationName" ItemsSource="{Binding}" HorizontalAlignment="Center" 
-                  Grid.Row="3" SelectedValuePath="StationId" Width="400" Height="42" FontSize="30" Margin="99.6,50,100.4,50">
+        <ComboBox x:Name="wasteTrackerStationsComboBox" Grid.Column="1" DisplayMemberPath="StationName" ItemsSource="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Top"
+                  Grid.Row="3" SelectedValuePath="StationId" Width="400" Height="42" FontSize="30" >
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel/>
@@ -54,7 +54,7 @@
             </Grid.RowDefinitions>
 
         </Grid>
-        <Grid x:Name="grid2" DataContext="{StaticResource wasteTrackerDBViewSource}" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="548" Height="158" Margin="126,0.8,126.4,0" >
+        <Grid x:Name="grid2" DataContext="{StaticResource wasteTrackerDBViewSource}" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Grid.ColumnSpan="3" Width="548" Height="169" Margin="126,0.8,126.4,0" Grid.RowSpan="2" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="Auto"/>
                 <ColumnDefinition Width="Auto"/>
