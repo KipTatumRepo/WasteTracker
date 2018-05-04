@@ -81,7 +81,7 @@ namespace Waste_Tracker.Pages
             int i = 4;
 
             //create header
-            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.ToString(); 
+            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedItem.ToString(); 
             ws.Range["A2"].Cells.Value = dateDatePicker.SelectedDate.ToString();
             ws.Range["A3"].Cells.ColumnWidth = 24;
             ws.Range["A3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
@@ -96,7 +96,6 @@ namespace Waste_Tracker.Pages
             //iterate through datagrid and put into excel doc
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)
             {
-               
                 ws.Range["A"+i].Value = dr[2];
                 ws.Range["B"+i].Value = dr[9];
                 ws.Range["C"+i].Value = dr[10];

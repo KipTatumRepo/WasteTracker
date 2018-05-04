@@ -2508,10 +2508,10 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date, IsActive, Ordered, Pe
             this._commandCollection[2].Connection = this.Connection;
             this._commandCollection[2].CommandText = "SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date, IsActive, Ordered, Per" +
                 "cOfConsumed, PercOfWaste FROM dbo.WasteTrackerDB WHERE StationId = @item AND IsA" +
-                "ctive = 1 AND Date = @date";
+                "ctive = 1 AND Date = @Date";
             this._commandCollection[2].CommandType = global::System.Data.CommandType.Text;
             this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@item", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "StationId", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._commandCollection[2].Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Date", global::System.Data.SqlDbType.Date, 3, global::System.Data.ParameterDirection.Input, 0, 0, "Date", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._commandCollection[3] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[3].Connection = this.Connection;
             this._commandCollection[3].CommandText = "INSERT INTO [dbo].[MenuItems] ([StationId], [MenuItem],  [Par], [UoM], [IsActive]" +
@@ -2594,14 +2594,14 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, false)]
-        public virtual int FillByStation3(SandboxDataSet.WasteTrackerDBDataTable dataTable, int item, string date) {
+        public virtual int FillByStation3(SandboxDataSet.WasteTrackerDBDataTable dataTable, int item, string Date) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(item));
-            if ((date == null)) {
+            if ((Date == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(date));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Date));
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -2614,14 +2614,14 @@ SELECT PID, StationId, MenuItem, LeftOver, Par, UoM, Date FROM WasteTrackerDB WH
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, false)]
-        public virtual SandboxDataSet.WasteTrackerDBDataTable GetDataByStation3(int item, string date) {
+        public virtual SandboxDataSet.WasteTrackerDBDataTable GetDataByStation3(int item, string Date) {
             this.Adapter.SelectCommand = this.CommandCollection[2];
             this.Adapter.SelectCommand.Parameters[0].Value = ((int)(item));
-            if ((date == null)) {
+            if ((Date == null)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(date));
+                this.Adapter.SelectCommand.Parameters[1].Value = ((string)(Date));
             }
             SandboxDataSet.WasteTrackerDBDataTable dataTable = new SandboxDataSet.WasteTrackerDBDataTable();
             this.Adapter.Fill(dataTable);
