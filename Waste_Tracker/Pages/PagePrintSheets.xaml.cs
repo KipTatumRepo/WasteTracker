@@ -62,7 +62,7 @@ namespace Waste_Tracker.Pages
             ws.PageSetup.FitToPagesWide = 1;
             ws.PageSetup.Orientation = XlPageOrientation.xlLandscape;
 
-            //start at row 3 row 1 is the Station, row 2 is date, row 3 is header
+            //start at row 3 row 1 is the Station, row 3 is header
             int i = 3;
 
             //create header
