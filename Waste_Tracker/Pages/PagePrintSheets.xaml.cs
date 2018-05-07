@@ -47,12 +47,12 @@ namespace Waste_Tracker.Pages
             mida.FillByStation(ds.MenuItems, item);
         }
 
-
         private void Button_Click_PrintStation(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
             CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
-           
+
+            #region Setup Excel Sheet
             //create new excel application
             Microsoft.Office.Interop.Excel.Application xla = new Microsoft.Office.Interop.Excel.Application();
 
@@ -128,7 +128,7 @@ namespace Waste_Tracker.Pages
                 ws.Range["I" + i].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
                 i++;
             }
-            
+            #endregion
             xla.Visible = true;
         }
     }
