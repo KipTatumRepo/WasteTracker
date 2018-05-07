@@ -74,6 +74,9 @@
     <Compile Include="Pages\PageActivateItem.xaml.cs">
       <DependentUpon>PageActivateItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\PagePrintSheets.xaml.cs">
+      <DependentUpon>PagePrintSheets.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\PageViewReports.xaml.cs">
       <DependentUpon>PageViewReports.xaml</DependentUpon>
     </Compile>
@@ -106,6 +109,10 @@
       <DependentUpon>SandboxDataSet.xsd</DependentUpon>
     </Compile>
     <Page Include="Pages\PageActivateItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PagePrintSheets.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

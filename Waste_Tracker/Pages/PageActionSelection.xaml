@@ -19,13 +19,14 @@
                 <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-            <Label Grid.ColumnSpan="4" FontSize="35" HorizontalAlignment="Center" Margin="10,19,0,0" VerticalAlignment="Top" Height="66" Width="497">
-                Microsoft SVMT Waste Tracker
-            </Label>
-            <Button Grid.Column="0" Grid.Row="1" Content="Enter Waste" Name="EnterWaste" Click="EnterWaste_Click" Style="{StaticResource Buttons}"/>
-            <Button Grid.Column="1" Grid.Row="1" Content="Adjust Pars" Name="AdjustPars" Click="AdjustPars_Click" Style="{StaticResource Buttons}" />
-            <Button Grid.Column="2" Grid.Row="1" Content="Add Items" Name="AddItem" Click="AddItem_Click" Style="{StaticResource Buttons}" />
-            <Button Grid.Column="3" Grid.Row="1" Content="View Reports" Name="ViewReports" Click="ViewReports_Click" Style="{StaticResource Buttons}" />
-            <Button Grid.Column="0" Grid.Row="2" Content="Reactivate Item" Name="ActivateItem" Click="ActivateItem_Click" Style="{StaticResource Buttons}"/>
+        <Label Grid.ColumnSpan="4" FontSize="35" HorizontalAlignment="Center" Margin="10,19,0,0" VerticalAlignment="Top" Height="66" Width="497">
+            Microsoft SVMT Waste Tracker
+        </Label>
+        <Button Grid.Column="0" Grid.Row="1" Content="Enter Waste" Name="EnterWaste" Click="EnterWaste_Click" Style="{StaticResource Buttons}"/>
+        <Button Grid.Column="1" Grid.Row="1" Content="Adjust Pars" Name="AdjustPars" Click="AdjustPars_Click" Style="{StaticResource Buttons}" />
+        <Button Grid.Column="2" Grid.Row="1" Content="Add Items" Name="AddItem" Click="AddItem_Click" Style="{StaticResource Buttons}" />
+        <Button Grid.Column="3" Grid.Row="1" Content="View Reports" Name="ViewReports" Click="ViewReports_Click" Style="{StaticResource Buttons}" />
+        <Button Grid.Column="0" Grid.Row="2" Content="Reactivate Item" Name="ActivateItem" Click="ActivateItem_Click" Style="{StaticResource Buttons}"/>
+        <Button Grid.Column="1" Grid.Row="2" Content="Print Sheets" Name="PrintSheets" Click="PrintSheets_Click" Style="{StaticResource Buttons}"/>
     </Grid>
 </Page>
