@@ -54,6 +54,13 @@ namespace Waste_Tracker
             NavigationService.Navigate(
                             new Uri("Pages/PageActivateItem.xaml", UriKind.Relative));
         }
+        
+        private void PrintSheets_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(
+                new Uri("Pages/PagePrintSheets.xaml", UriKind.Relative));
+        }
         #endregion
+
     }
 }
