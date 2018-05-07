@@ -35,9 +35,9 @@ namespace Waste_Tracker
             CollectionViewSource stViewSource = ((CollectionViewSource)(FindResource("wasteTrackerStationsViewSource")));
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
-
         }
 
+        #region Combobox Selection
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -48,7 +48,8 @@ namespace Waste_Tracker
             //fill datagrid with dataset of menu items that match station selection
             mida.FillByStationAll(ds.MenuItems, item);
         }
-
+        #endregion
+        #region Button Clicks
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -68,5 +69,6 @@ namespace Waste_Tracker
             BIMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
+        #endregion
     }
 }

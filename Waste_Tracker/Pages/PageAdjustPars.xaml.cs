@@ -28,7 +28,6 @@ namespace Waste_Tracker
     {
         SqlConnection Conn;
         SqlCommand Cmd;
-        
 
         public PageAdjustPars()
         {
@@ -43,7 +42,7 @@ namespace Waste_Tracker
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
         }
-
+        #region Combobox Selection
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -54,7 +53,8 @@ namespace Waste_Tracker
             //fill datagrid with dataset of menu items that match station selection
             mida.FillByStation(ds.MenuItems, item);
         }
-
+        #endregion
+        #region Button Clicks
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -98,5 +98,6 @@ namespace Waste_Tracker
                 BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
         }
+        #endregion
     }
 }

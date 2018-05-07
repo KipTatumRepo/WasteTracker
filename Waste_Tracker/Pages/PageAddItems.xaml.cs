@@ -37,7 +37,7 @@ namespace Waste_Tracker
             SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter sbda = new SandboxDataSetTableAdapters.WasteTrackerStationsTableAdapter();
             sbda.Fill(ds.WasteTrackerStations);
         }
-
+        #region Button Click
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             StationId = wasteTrackerStationsComboBox.SelectedIndex;
@@ -58,12 +58,14 @@ namespace Waste_Tracker
             {
                 BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex.Message);
             }
-
+            #endregion
+            #region Reset Combobox to 0 and clear TextBoxes
             //clear textbox 
             wasteTrackerStationsComboBox.SelectedIndex = 0;
             menuItemTextBox.Clear();
             parTextBox.Clear();
             uoMTextBox.Clear();
         }
+        #endregion
     }
 }

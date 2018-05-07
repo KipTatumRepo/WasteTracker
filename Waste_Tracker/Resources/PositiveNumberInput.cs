@@ -8,7 +8,7 @@ using System.Windows.Controls;
 
 namespace Waste_Tracker
 {
-    class PositiveNumberInput : ValidationRule
+    public class PositiveNumberInput : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {

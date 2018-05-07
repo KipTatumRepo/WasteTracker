@@ -45,7 +45,7 @@ namespace Waste_Tracker.Pages
                 BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
         }
-
+        #region Combobox Selection
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -67,7 +67,8 @@ namespace Waste_Tracker.Pages
                 da.FillByStation3(ds.WasteTrackerDB, item, date);
             }
         }
-
+        #endregion
+        #region Button Clicks
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -103,5 +104,6 @@ namespace Waste_Tracker.Pages
             }
             xla.Visible = true;
         }
+        #endregion
     }
 }

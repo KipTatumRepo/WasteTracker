@@ -48,6 +48,21 @@ namespace Waste_Tracker
             }
         }
 
+        #region Combobox Selection
+        private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+
+            //get index of combobox selected item 0 based
+            int item = wasteTrackerStationsComboBox.SelectedIndex;
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+
+            //fill datagrid with dataset of menu items that match station selection
+            da.FillByStation2(ds.WasteTrackerDB, item);
+        }
+        #endregion
+
+        #region Button Clicks
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
@@ -118,17 +133,7 @@ namespace Waste_Tracker
             Conn.Close();
         }
 
-        private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-
-            //get index of combobox selected item 0 based
-            int item = wasteTrackerStationsComboBox.SelectedIndex;
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
-           
-            //fill datagrid with dataset of menu items that match station selection
-            da.FillByStation2(ds.WasteTrackerDB, item);
-        }
+        
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
@@ -153,5 +158,6 @@ namespace Waste_Tracker
             BIMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
+        #endregion
     }
 }

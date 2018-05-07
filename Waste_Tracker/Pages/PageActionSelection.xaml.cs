@@ -24,7 +24,7 @@ namespace Waste_Tracker
         {
             InitializeComponent();
         }
-
+        #region Button Clicks
         private void EnterWaste_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(
@@ -54,5 +54,6 @@ namespace Waste_Tracker
             NavigationService.Navigate(
                             new Uri("Pages/PageActivateItem.xaml", UriKind.Relative));
         }
+        #endregion
     }
 }
