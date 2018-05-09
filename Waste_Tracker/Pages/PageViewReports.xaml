@@ -61,13 +61,15 @@
                 <!-- End Hidden Columns -->
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="idealLeftOverColumn" Binding="{Binding IdealLeftOver}" Header="Calc Left Over" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered}" Header="Ordered" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
+                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered}" Header="Ordered" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="percOfConsumedColumn" Binding="{Binding PercOfConsumed, StringFormat=\{0:F\}}" Header="Percent Of Consumed" Width="*" CanUserSort="False" 
                                     HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
