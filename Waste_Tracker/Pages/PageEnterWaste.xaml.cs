@@ -78,10 +78,13 @@ namespace Waste_Tracker
                     //use SQL command to insert into DB
                     Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
                     Conn.Open();
+                    decimal LeftOver;
+                    int Ordered;
 
                     //iterate over each row of DataGrid, get values of each cell, and insert into DB
                     foreach (DataRow dr in ds.WasteTrackerDB.Rows)
                     {
+
                         string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date, @IsActive, @Ordered)";
                         Cmd = new SqlCommand(sqlString, Conn);
                         Cmd.Parameters.AddWithValue("@StationId", dr[1]);
@@ -94,11 +97,9 @@ namespace Waste_Tracker
                         Cmd.Parameters.AddWithValue("@Ordered", dr[8]);
 
                         string leftOver = dr[3].ToString();
-                        decimal LeftOver;
                         string ordered = dr[8].ToString();
-                        int Ordered;
-
-                        if (leftOver == null || ordered == null)
+                        
+                        if (leftOver == "" || ordered == "" )
                         {
                             BIMessageBox.Show("Please enter a valid number between 0 and 99999999");
                             return;
@@ -107,7 +108,7 @@ namespace Waste_Tracker
                         { 
                         LeftOver = decimal.Parse(leftOver);
                         Ordered = int.Parse(ordered);
-                            if (LeftOver < 0 || Ordered < 0)
+                            if (LeftOver < 0 || Ordered < 0 || LeftOver == -1 || Ordered == -1 )
                             {
                                 BIMessageBox.Show("Please enter a valid number between 0 and 9999999999");
                                 return;
@@ -133,8 +134,6 @@ namespace Waste_Tracker
             }
             Conn.Close();
         }
-
-        
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
