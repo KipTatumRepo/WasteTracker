@@ -4,7 +4,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:Waste_Tracker"
-      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PageViewReports">
@@ -20,9 +19,9 @@
             <RowDefinition Height=".15*"/>
             <RowDefinition Height=".15*"/>
             <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".2*"/>
             <RowDefinition Height=".15*"/>
-            <RowDefinition Height=".15*"/>
-            <RowDefinition Height=".15*"/>
+            <RowDefinition Height=".2*"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height=".25*"/>
         </Grid.RowDefinitions>
@@ -31,10 +30,10 @@
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="View Reports"  Height="50" />
         <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Date" />
         <DatePicker x:Name="dateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                    Background="LemonChiffon" FontSize="36" Width="400" Height="51"/>
+                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="0,5,0,5"/>
         <TextBlock Grid.Row="4" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Select Station" Margin="0,5,0,5" />
         <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" 
-                  HorizontalAlignment="Center" VerticalAlignment="Top" Width="400" Height="51" FontSize="30" Grid.Row="5" 
+                  HorizontalAlignment="Center" VerticalAlignment="Top" Width="320" Height="51" FontSize="30" Grid.Row="5" Margin="0,5,0,5"
                   SelectedValuePath="StationId" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -47,18 +46,6 @@
                    Margin="5,0,5,5" Grid.Row="6" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserReorderColumns="False"
                    AlternatingRowBackground="AliceBlue">
             <DataGrid.Columns>
-                <!-- Hidden Columns -->
-                <DataGridTextColumn x:Name="pIDColumn" Binding="{Binding PID}" Header="PID" IsReadOnly="True" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" Visibility="Hidden" />
-                <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" Header="Station Id" Width="SizeToHeader" HeaderStyle="{StaticResource CenterGridHeader}" Visibility="Hidden"/>
-                <DataGridTemplateColumn x:Name="dateColumn" Header="Date" Width="SizeToHeader" HeaderStyle="{StaticResource CenterGridHeader}" Visibility="Hidden">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <DatePicker SelectedDate="{Binding Date, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
-                <DataGridTextColumn x:Name="isActiveColumn" Binding="{Binding IsActive}" Header="Is Active" Width="*" HeaderStyle="{StaticResource CenterGridHeader}" Visibility="Hidden"/>
-                <!-- End Hidden Columns -->
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
@@ -69,7 +56,7 @@
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered}" Header="Ordered" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
+                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, StringFormat=\{0:F\}}" Header="Ordered" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="percOfConsumedColumn" Binding="{Binding PercOfConsumed, StringFormat=\{0:F\}}" Header="Percent Consumed" Width="*" CanUserSort="False" 
                                     HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
@@ -77,6 +64,6 @@
                                     HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Save as Excel" HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource Buttons}" />
+        <Button Content="Save as Excel" HorizontalAlignment="Right" Grid.Row="7" Margin="5,2,5,5" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource Buttons}" />
     </Grid>
 </Page>
