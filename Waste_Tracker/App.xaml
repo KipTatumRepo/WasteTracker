@@ -59,11 +59,11 @@
         <Style x:Key="CenterCellTextLocked" TargetType="{x:Type DataGridCell}">
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
             <Setter Property="FontWeight" Value="UltraLight" />
-            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontSize" Value="25" />
         </Style>
         <Style x:Key="CenterCellText" TargetType="{x:Type DataGridCell}">
             <Setter Property="TextBlock.TextAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontSize" Value="25" />
         </Style>
         <Style TargetType="{x:Type Page}">
             <Setter Property="Background"
