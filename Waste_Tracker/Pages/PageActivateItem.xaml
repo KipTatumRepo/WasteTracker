@@ -40,9 +40,6 @@
                   Margin="10,9.6,10,10.2"  AlternatingRowBackground="AliceBlue" Background="LemonChiffon" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False" 
                   SelectionUnit="Cell" SelectionMode="Single" CanUserAddRows="False">
             <DataGrid.Columns>
-                <!-- Hidden Columns -->
-                <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" Header="Station Id" Width="SizeToHeader" Visibility="Hidden"/>
-                <!-- End Hidden Columns -->
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" Width="*" FontSize="36"
                                     CanUserSort="False"/>
@@ -61,6 +58,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Reactivate Item" HorizontalAlignment="Right" Grid.Row="7" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource Buttons}" />
+        <Button Content="Reactivate Item" HorizontalAlignment="Right" Grid.Row="7" Margin="5,2,5,5" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource Buttons}" />
     </Grid>
 </Page>

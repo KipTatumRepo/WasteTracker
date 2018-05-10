@@ -31,7 +31,7 @@
         <TextBlock Grid.Row="1" Grid.Column="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Add Menu Item" Height="50" Margin="146.6,0.2,146.4,0" Grid.RowSpan="2" Width="207"   />
         <TextBlock Grid.Row="2" Grid.Column="1" Text="Select Station" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="top" Height="36" Margin="160.6,0.8,160.4,0" Grid.RowSpan="2" Width="179"   />
         <ComboBox x:Name="wasteTrackerStationsComboBox" Grid.Column="1" DisplayMemberPath="StationName" ItemsSource="{Binding}" HorizontalAlignment="Center" VerticalAlignment="Top"
-                  Grid.Row="3" SelectedValuePath="StationId" Width="400" Height="42" FontSize="30" >
+                  Grid.Row="3" SelectedValuePath="StationId" Width="400" Height="42" FontSize="30">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel/>
@@ -66,16 +66,21 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
             <Label Content="Menu Item:" Grid.Column="0" HorizontalAlignment="Center" Margin="3,3,20,3" Grid.Row="0" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="menuItemTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="0" 
+            <TextBox x:Name="menuItemTextBox" Grid.Column="1" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="0" 
                      Text="{Binding MenuItem, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
             <Label Content="Par:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,20,3" Grid.Row="1" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="parTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="1" 
+            <TextBox x:Name="parTextBox" Grid.Column="1" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="1" 
                      Text="{Binding Par, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
             <Label Content="UoM:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,20,3" Grid.Row="2" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="uoMTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="2" 
-                     Text="{Binding UoM, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
+            <ComboBox x:Name="uoMStationsComboBox" Grid.Column="1" DisplayMemberPath="Name" ItemsSource="{DynamicResource UoMSource}" HorizontalAlignment="Right" VerticalAlignment="Top"
+                  Grid.Row="3" SelectedValuePath="StationId" Width="300" Height="42" FontSize="30" SelectedValue="{Binding UoM, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Margin="20,3,3,3" >
+                <ComboBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel/>
+                    </ItemsPanelTemplate>
+                </ComboBox.ItemsPanel>
+            </ComboBox>
         </Grid>
         <Button Content="Save" Grid.Column="1" Grid.Row="5" Click="Button_Click" Margin="172.5,20,172.5,10" Style="{StaticResource Buttons}" />
-
     </Grid>
 </Page>

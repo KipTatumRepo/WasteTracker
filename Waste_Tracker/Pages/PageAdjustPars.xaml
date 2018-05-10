@@ -35,7 +35,7 @@
         <TextBlock Grid.Row="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" Margin="25,5,25,5"  />
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Adjust Par Level"  Height="50" Margin="25,5,25,5"  />
         <TextBlock Grid.Row="2" Text="Select Station" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="top" Margin="25,5,25,5" />
-        <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding}" Margin="381,27,401,11" Grid.Row="3" SelectedValuePath="StationId" Height="42"
+        <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding}" Margin="0,5,0,5" Grid.Row="3" SelectedValuePath="StationId" Height="42" Width="320"
                   HorizontalAlignment="Center" FontSize="30" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -45,7 +45,7 @@
         </ComboBox>
         <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource wasteTrackerMIViewSource}}" 
                   AlternatingRowBackground="AliceBlue" Background="LemonChiffon" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserReorderColumns="False" 
-                  SelectionUnit="Cell" SelectionMode="Single" CanUserAddRows="False">
+                  SelectionUnit="Cell" SelectionMode="Single" CanUserAddRows="False"  Margin="5,0,5,0">
             <DataGrid.Resources>
                 <Style x:Key="errorStyle" TargetType="{x:Type TextBox}">
                     <Style.Triggers>
@@ -78,6 +78,6 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Save" Grid.Row="5" Click="Button_Click" Style="{StaticResource Buttons}"/>
+        <Button Content="Save" Grid.Row="5" Click="Button_Click" Style="{StaticResource Buttons}" Margin="0,2,0,5"/>
     </Grid>
 </Page>

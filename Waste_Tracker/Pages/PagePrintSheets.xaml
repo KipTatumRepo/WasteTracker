@@ -22,7 +22,7 @@
             <RowDefinition Height=".15*"/>
             <RowDefinition Height=".15*" />
             <RowDefinition Height="*"/>
-            <RowDefinition Height=".2*"/>
+            <RowDefinition Height=".25*"/>
         </Grid.RowDefinitions>
         <!-- Text on Top -->
         <TextBlock Grid.Row="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" Margin="165,0" Grid.RowSpan="2" Width="470" />
@@ -37,23 +37,22 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
         <DataGrid x:Name="menuItemsDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" 
-                  Margin="10,19.4,10,10.2" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False">
+                  Margin="5,0,5,0" Grid.Row="4" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" AlternatingRowBackground="AliceBlue">
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" Width="SizeToHeader" Visibility="Hidden"/>
                 <DataGridTextColumn x:Name="isActiveColumn" Binding="{Binding IsActive}" Header="Is Active" Width="SizeToHeader" Visibility="Hidden"/>
-                
-                <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" Header="Station Id" Width=".25*" HeaderStyle="{StaticResource CenterGridHeader}"
+                <DataGridTextColumn x:Name="stationIdColumn" Binding="{Binding StationId}" Header="Station Id" Width=".45*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" Width=".25*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="blankColumn" Header="Left Over" Width=".25*" HeaderStyle="{StaticResource CenterGridHeader}"
+                <DataGridTextColumn x:Name="blankColumn" Header="Left Over" Width=".4*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="blankColumn2" Header="Comments" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Print Station"  Grid.Row="5" Click="Button_Click_PrintStation" HorizontalAlignment="Right" Margin="0,0,5,5" Style="{StaticResource Buttons}"/>
+        <Button Content="Print Station" Grid.Row="5" Click="Button_Click_PrintStation" HorizontalAlignment="Right" Margin="0,2,5,5" Style="{StaticResource Buttons}"/>
     </Grid>
 </Page>
