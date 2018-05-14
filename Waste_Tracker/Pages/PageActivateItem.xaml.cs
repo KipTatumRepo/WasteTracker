@@ -64,9 +64,9 @@ namespace Waste_Tracker
                 Cmd.Parameters.AddWithValue("@MenuItem", dr[1]);
                 Cmd.Parameters.AddWithValue("@IsActive", 1);
                 Cmd.ExecuteNonQuery();
+               
             }
-
-            BIMessageBox.Show("Menu Item is Active Again");
+            BIMessageBox.Show("Leftover values have been updated");
             Conn.Close();
         }
         #endregion

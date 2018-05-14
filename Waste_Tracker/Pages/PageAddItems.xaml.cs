@@ -44,7 +44,7 @@ namespace Waste_Tracker
             MenuItem = menuItemTextBox.Text;
             Par = decimal.Parse(parTextBox.Text);
             IsActive = 1;
-            UoM = uoMStationsComboBox.Text;
+            UoM = uoMTextBox.Text;
             
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
 
@@ -64,7 +64,7 @@ namespace Waste_Tracker
             wasteTrackerStationsComboBox.SelectedIndex = 0;
             menuItemTextBox.Clear();
             parTextBox.Clear();
-            uoMStationsComboBox.SelectedIndex = 0;
+            uoMTextBox.Clear();
         }
         #endregion
     }
