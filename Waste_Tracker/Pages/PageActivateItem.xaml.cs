@@ -56,17 +56,16 @@ namespace Waste_Tracker
 
             Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
             Conn.Open();
-
+            
             foreach (DataRow dr in ds.MenuItems.Rows)
             {
                 string sqlString = "UPDATE MenuItems SET IsActive = @IsActive WHERE MenuItem = @MenuItem";
                 Cmd = new SqlCommand(sqlString, Conn);
                 Cmd.Parameters.AddWithValue("@MenuItem", dr[1]);
-                Cmd.Parameters.AddWithValue("@IsActive", 1);
+                Cmd.Parameters.AddWithValue("@IsActive", dr[4]);
                 Cmd.ExecuteNonQuery();
-               
             }
-            BIMessageBox.Show("Leftover values have been updated");
+            BIMessageBox.Show("Item is Active Again");
             Conn.Close();
         }
         #endregion
