@@ -30,11 +30,11 @@
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="View Reports"  Height="50" />
         <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Date" />
         <DatePicker x:Name="dateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="0,5,0,5"/>
+                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="0,5,0,5" SelectedDateFormat="Short"/>
         <TextBlock Grid.Row="4" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Select Station" Margin="0,5,0,5" />
         <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" 
                   HorizontalAlignment="Center" VerticalAlignment="Top" Width="320" Height="51" FontSize="30" Grid.Row="5" Margin="0,5,0,5"
-                  SelectedValuePath="StationId" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
+                  SelectedValuePath="StationName" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel/>

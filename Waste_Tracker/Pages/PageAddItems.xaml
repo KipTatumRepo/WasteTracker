@@ -72,8 +72,8 @@
             <TextBox x:Name="parTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="1" 
                      Text="{Binding Par, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
             <Label Content="UoM:" Grid.Column="0" HorizontalAlignment="Left" Margin="3,3,20,3" Grid.Row="2" VerticalAlignment="Center" FontSize="30"/>
-            <TextBox x:Name="uoMTextBox" Grid.Column="2" HorizontalAlignment="Right" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" Grid.Row="2" 
-                     Text="{Binding UoM, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}" VerticalAlignment="Center" />
+            <ComboBox Name="uomCombobox" Grid.Column="2" Grid.Row="3" Width="300" Height="42" FontSize="30" Margin="20,3,3,3" HorizontalAlignment="Right"
+                      ItemsSource="{DynamicResource UoMSource}" DisplayMemberPath="Name" SelectedValuePath="Name"/>
         </Grid>
         <Button Content="Save" Grid.Column="1" Grid.Row="5" Click="Button_Click" Margin="172.5,20,172.5,10" Style="{StaticResource Buttons}" />
 

@@ -82,7 +82,7 @@ namespace Waste_Tracker.Pages
             int i = 4;
 
             //create header
-            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedItem.ToString(); 
+            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString(); 
             ws.Range["A2"].Cells.Value = dateDatePicker.SelectedDate.ToString();
             ws.Range["A3"].Cells.ColumnWidth = 24;
             ws.Range["A3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 

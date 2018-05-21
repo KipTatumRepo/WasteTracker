@@ -28,8 +28,8 @@
         <TextBlock Grid.Row="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" Margin="165,0" Grid.RowSpan="2" Width="470" />
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Print Sheets"  Height="50" Margin="322,0.4,322,0" Grid.RowSpan="2" Width="156" />
         <TextBlock Grid.Row="2" Text="Select Station" FontSize="30"  HorizontalAlignment="Center" VerticalAlignment="Top" Margin="310,5,310,0" Height="40" Grid.RowSpan="2" Width="180" />
-        <ComboBox x:Name="wasteTrackerStationsComboBox" Grid.Row="3" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" Height="51" FontSize="30" SelectedValuePath="StationId" 
-                  VerticalAlignment="Top" Margin="200,0.4,200,0" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
+        <ComboBox x:Name="wasteTrackerStationsComboBox" Grid.Row="3" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" Height="51" FontSize="30" 
+                  SelectedValuePath="StationName" VerticalAlignment="Top" Margin="200,0.4,200,0" SelectionChanged="wasteTrackerStationsComboBox_SelectionChanged">
             <ComboBox.ItemsPanel>
                 <ItemsPanelTemplate>
                     <VirtualizingStackPanel/>

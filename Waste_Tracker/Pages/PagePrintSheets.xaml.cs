@@ -66,7 +66,7 @@ namespace Waste_Tracker.Pages
             int i = 3;
 
             //create header
-            //ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedItem.ToString();
+            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString();
             ws.Range["A2"].Cells.ColumnWidth = 8;
             ws.Range["A2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["A2"].Cells.Borders.LineStyle =  Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
@@ -83,23 +83,23 @@ namespace Waste_Tracker.Pages
             ws.Range["D2"].Cells.ColumnWidth = 6.2;
             ws.Range["D2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["D2"].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
-            ws.Range["D2"].Value = "Mon";
+            ws.Range["D2"].Value = "Fri";
             ws.Range["E2"].Cells.ColumnWidth = 6.2;
             ws.Range["E2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["E2"].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
-            ws.Range["E2"].Value = "Tue";
+            ws.Range["E2"].Value = "Mon";
             ws.Range["F2"].Cells.ColumnWidth = 6.2;
             ws.Range["F2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["F2"].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
-            ws.Range["F2"].Value = "Wed";
+            ws.Range["F2"].Value = "Tue";
             ws.Range["G2"].Cells.ColumnWidth = 6.2;
             ws.Range["G2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["G2"].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
-            ws.Range["G2"].Value = "Thu";
+            ws.Range["G2"].Value = "Wed";
             ws.Range["H2"].Cells.ColumnWidth = 6.2;
             ws.Range["H2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["H2"].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
-            ws.Range["H2"].Value = "Fri";
+            ws.Range["H2"].Value = "Thu";
             ws.Range["I2"].Cells.ColumnWidth = 40;
             ws.Range["I2"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["I2"].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
