@@ -106,6 +106,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Resources\ConnectionHelper.cs" />
     <Compile Include="Pages\PageActivateItem.xaml.cs">
       <DependentUpon>PageActivateItem.xaml</DependentUpon>
     </Compile>
@@ -135,13 +136,13 @@
     </Compile>
     <Compile Include="Resources\PositiveNumberInput.cs" />
     <Compile Include="Resources\SimpleUoM.cs" />
-    <Compile Include="SandboxDataSet.cs">
-      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+    <Compile Include="ParDataSet.cs">
+      <DependentUpon>ParDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="SandboxDataSet.Designer.cs">
+    <Compile Include="ParDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+      <DependentUpon>ParDataSet.xsd</DependentUpon>
     </Compile>
     <Page Include="Pages\PageActivateItem.xaml">
       <SubType>Designer</SubType>
@@ -209,16 +210,16 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="SandboxDataSet.xsc">
-      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+    <None Include="ParDataSet.xsc">
+      <DependentUpon>ParDataSet.xsd</DependentUpon>
     </None>
-    <None Include="SandboxDataSet.xsd">
+    <None Include="ParDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>SandboxDataSet.Designer.cs</LastGenOutput>
+      <LastGenOutput>ParDataSet.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </None>
-    <None Include="SandboxDataSet.xss">
-      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+    <None Include="ParDataSet.xss">
+      <DependentUpon>ParDataSet.xsd</DependentUpon>
     </None>
     <None Include="Waste_Tracker_TemporaryKey.pfx" />
   </ItemGroup>

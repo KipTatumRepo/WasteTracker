@@ -26,7 +26,7 @@ namespace Waste_Tracker
     
     public partial class PageAdjustPars : Page
     {
-        SqlConnection Conn;
+        //SqlConnection Conn;
         SqlCommand Cmd;
 
         public PageAdjustPars()
@@ -59,29 +59,18 @@ namespace Waste_Tracker
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-            //SandboxDataSetTableAdapters.MenuItemsTableAdapter mida = new SandboxDataSetTableAdapters.MenuItemsTableAdapter();
             
             try
             {
 
-                //Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
-                Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
-                Conn.Open();
+                SqlConnection conn = ConnectionHelper.GetConn();
+                conn.Open();
 
                 //iterate over datagrid, update values
                 foreach (DataRow dr in ds.MenuItems.Rows)
                 {
-                    /*string stationId = dr[0].ToString();
-                    int stationid = int.Parse(stationId);
-                    string MenuItem = dr[1].ToString();
-                    string par = dr[2].ToString();
-                    decimal Par = decimal.Parse(par);
-                    string UoM = dr[3].ToString();
-                    string isactive = dr[4].ToString();
-                    int IsActive = int.Parse(isactive);*/
-
                     string sqlString = "UPDATE MenuItems SET Par = @Par, UoM = @UoM, IsActive = @IsActive WHERE MenuItem = @MenuItem AND @StationId = StationId";
-                    Cmd = new SqlCommand(sqlString, Conn);
+                    Cmd = new SqlCommand(sqlString, conn);
                     Cmd.Parameters.AddWithValue("@StationId", dr[1]);
                     Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
                     Cmd.Parameters.AddWithValue("@Par", dr[3]);
@@ -89,7 +78,7 @@ namespace Waste_Tracker
                     Cmd.Parameters.AddWithValue("@IsActive", dr[5]);
                     
                     //get par cell for data validation
-                    /*string _par = dr[2].ToString();
+                    string _par = dr[3].ToString();
                     decimal par;
                     par = decimal.Parse(_par);
 
@@ -99,12 +88,11 @@ namespace Waste_Tracker
                         return;
                     }
                     else
-                    {*/
-                        //mida.UpdateQuery(stationid, MenuItem, Par, UoM, IsActive);
+                    {
                         Cmd.ExecuteNonQuery();
-                    //}
+                    }
                 }
-                Conn.Close();
+                conn.Close();
                 BIMessageBox.Show("Par level has been updated.");
             }
             catch (Exception ex)
