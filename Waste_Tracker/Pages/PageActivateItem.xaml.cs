@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Resources;
 
 namespace Waste_Tracker
 {
@@ -22,7 +23,7 @@ namespace Waste_Tracker
     /// </summary>
     public partial class PageActivateItem : Page
     {
-        SqlConnection Conn;
+        
         SqlCommand Cmd;
         public PageActivateItem()
         {
@@ -54,19 +55,19 @@ namespace Waste_Tracker
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
 
-            Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
-            Conn.Open();
+            SqlConnection conn = ConnectionHelper.GetConn();
+            conn.Open();
             
             foreach (DataRow dr in ds.MenuItems.Rows)
             {
                 string sqlString = "UPDATE MenuItems SET IsActive = @IsActive WHERE MenuItem = @MenuItem";
-                Cmd = new SqlCommand(sqlString, Conn);
+                Cmd = new SqlCommand(sqlString, conn);
                 Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
                 Cmd.Parameters.AddWithValue("@IsActive", dr[5]);
                 Cmd.ExecuteNonQuery();
             }
             BIMessageBox.Show("Item is Active Again");
-            Conn.Close();
+            conn.Close();
         }
         #endregion
     }

@@ -26,7 +26,7 @@ namespace Waste_Tracker
 
     public partial class PageEnterWaste : Page
     {
-        SqlConnection Conn;
+        //SqlConnection Conn;
         SqlCommand Cmd;
 
         public PageEnterWaste()
@@ -76,17 +76,16 @@ namespace Waste_Tracker
                 try
                 {
                     //use SQL command to insert into DB
-                    Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
-                    Conn.Open();
+                    SqlConnection conn = ConnectionHelper.GetConn();
+                    conn.Open();
                     decimal LeftOver;
                     int Ordered;
 
                     //iterate over each row of DataGrid, get values of each cell, and insert into DB
                     foreach (DataRow dr in ds.WasteTrackerDB.Rows)
                     {
-
                         string sqlString = "INSERT INTO WasteTrackerDB VALUES (@StationId, @MenuItem, @LeftOver, @Par, @UoM, @Date, @IsActive, @Ordered)";
-                        Cmd = new SqlCommand(sqlString, Conn);
+                        Cmd = new SqlCommand(sqlString, conn);
                         Cmd.Parameters.AddWithValue("@StationId", dr[1]);
                         Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
                         Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
@@ -120,6 +119,7 @@ namespace Waste_Tracker
                         }
                     }
                     BIMessageBox.Show("Leftover values have been added");
+                    conn.Close();
                 }
                 catch (Exception ex)
                 {
@@ -132,7 +132,7 @@ namespace Waste_Tracker
                 BIMessageBox.Show("Please Enter a Date");
                 return;
             }
-            Conn.Close();
+            
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -142,22 +142,22 @@ namespace Waste_Tracker
 
             DateTime? Date = dateDatePicker.SelectedDate;
 
-            Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
-            Conn.Open();
+            SqlConnection conn = ConnectionHelper.GetConn();
+            conn.Open();
 
             //iterate over datagrid, update values
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)
             {
                 string sqlString = "UPDATE WasteTrackerDB SET LeftOver = @LeftOver, Ordered = @Ordered WHERE MenuItem = @MenuItem AND Date = @Date";
-                Cmd = new SqlCommand(sqlString, Conn);
+                Cmd = new SqlCommand(sqlString, conn);
                 Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
-                Cmd.Parameters.AddWithValue("@LeftOver", dr[4]);
+                Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
                 Cmd.Parameters.AddWithValue("@Ordered", dr[8]);
                 Cmd.Parameters.AddWithValue("@Date", Date);
                 Cmd.ExecuteNonQuery();
             }
             BIMessageBox.Show("Leftover values have been updated");
-            Conn.Close();
+            conn.Close();
         }
         #endregion
     }
