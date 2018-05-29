@@ -24,7 +24,7 @@ namespace Waste_Tracker
         string MenuItem;
         decimal Par;
         string UoM;
-        int IsActive;
+        bool IsActive;
         public PageAddItems()
         {
             InitializeComponent();
@@ -43,7 +43,7 @@ namespace Waste_Tracker
             StationId = wasteTrackerStationsComboBox.SelectedIndex;
             MenuItem = menuItemTextBox.Text;
             Par = decimal.Parse(parTextBox.Text);
-            IsActive = 1;
+            IsActive = true;
             UoM = uomCombobox.SelectedValue.ToString();
             
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();

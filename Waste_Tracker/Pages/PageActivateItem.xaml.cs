@@ -54,15 +54,15 @@ namespace Waste_Tracker
         {
             SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
 
-            Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+            Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
             Conn.Open();
             
             foreach (DataRow dr in ds.MenuItems.Rows)
             {
                 string sqlString = "UPDATE MenuItems SET IsActive = @IsActive WHERE MenuItem = @MenuItem";
                 Cmd = new SqlCommand(sqlString, Conn);
-                Cmd.Parameters.AddWithValue("@MenuItem", dr[1]);
-                Cmd.Parameters.AddWithValue("@IsActive", dr[4]);
+                Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
+                Cmd.Parameters.AddWithValue("@IsActive", dr[5]);
                 Cmd.ExecuteNonQuery();
             }
             BIMessageBox.Show("Item is Active Again");

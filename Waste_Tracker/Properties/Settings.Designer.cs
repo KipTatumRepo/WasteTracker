@@ -32,5 +32,28 @@ namespace Waste_Tracker.Properties {
                 return ((string)(this["SandboxConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:compassbiazure.database.windows.net,1433;Initial Catalog=FieldSiteDB;P" +
+            "ersist Security Info=False;User ID=FieldApps;Password=K%Th8#30!;MultipleActiveRe" +
+            "sultSets=False;Encrypt=True;TrustServerCertificate=False;")]
+        public string ParConnectionString {
+            get {
+                return ((string)(this["ParConnectionString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persi" +
+            "st Security Info=True;User ID=FieldApps;Password=K%Th8#30!")]
+        public string FieldSiteDBConnectionString {
+            get {
+                return ((string)(this["FieldSiteDBConnectionString"]));
+            }
+        }
     }
 }

@@ -135,6 +135,9 @@
     </Compile>
     <Compile Include="Resources\PositiveNumberInput.cs" />
     <Compile Include="Resources\SimpleUoM.cs" />
+    <Compile Include="SandboxDataSet.cs">
+      <DependentUpon>SandboxDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="SandboxDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

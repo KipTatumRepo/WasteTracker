@@ -76,7 +76,7 @@ namespace Waste_Tracker
                 try
                 {
                     //use SQL command to insert into DB
-                    Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+                    Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
                     Conn.Open();
                     decimal LeftOver;
                     int Ordered;
@@ -142,16 +142,17 @@ namespace Waste_Tracker
 
             DateTime? Date = dateDatePicker.SelectedDate;
 
-            Conn = new SqlConnection("Data Source=compasspowerbi;Initial Catalog=Sandbox;Persist Security Info=False;Integrated Security=SSPI");
+            Conn = new SqlConnection("Data Source=compassbiazure.database.windows.net;Initial Catalog=FieldSiteDB;Persist Security Info=True;User ID=FieldApps;Password=K%Th8#30!");
             Conn.Open();
 
             //iterate over datagrid, update values
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)
             {
-                string sqlString = "UPDATE WasteTrackerDB SET LeftOver = @LeftOver WHERE MenuItem = @MenuItem AND Date = @Date";
+                string sqlString = "UPDATE WasteTrackerDB SET LeftOver = @LeftOver, Ordered = @Ordered WHERE MenuItem = @MenuItem AND Date = @Date";
                 Cmd = new SqlCommand(sqlString, Conn);
                 Cmd.Parameters.AddWithValue("@MenuItem", dr[2]);
-                Cmd.Parameters.AddWithValue("@LeftOver", dr[3]);
+                Cmd.Parameters.AddWithValue("@LeftOver", dr[4]);
+                Cmd.Parameters.AddWithValue("@Ordered", dr[8]);
                 Cmd.Parameters.AddWithValue("@Date", Date);
                 Cmd.ExecuteNonQuery();
             }

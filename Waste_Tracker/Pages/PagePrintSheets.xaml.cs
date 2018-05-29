@@ -107,10 +107,10 @@ namespace Waste_Tracker.Pages
 
             foreach (DataRow dr in ds.MenuItems.Rows)
             {
-                ws.Range["A" + i].Value = dr[0];
+                ws.Range["A" + i].Value = dr[1];
                 ws.Range["A" + i].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
                 ws.Range["A" + i].Cells.Rows.RowHeight = 30;
-                ws.Range["B" + i].Value = dr[1];
+                ws.Range["B" + i].Value = dr[2];
                 ws.Range["B" + i].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
                 ws.Range["C" + i].Value = dr[3];
                 ws.Range["C" + i].Cells.Borders.LineStyle = Microsoft.Office.Interop.Excel.XlLineStyle.xlContinuous;
