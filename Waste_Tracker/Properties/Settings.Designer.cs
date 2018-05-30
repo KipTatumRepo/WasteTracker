@@ -26,16 +26,6 @@ namespace Waste_Tracker.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=compasspowerbi;Initial Catalog=Sandbox;Integrated Security=True")]
-        public string SandboxConnectionString {
-            get {
-                return ((string)(this["SandboxConnectionString"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Server=tcp:compassbiazure.database.windows.net,1433;Initial Catalog=FieldSiteDB;P" +
             "ersist Security Info=False;User ID=FieldApps;Password=K%Th8#30!;MultipleActiveRe" +
             "sultSets=False;Encrypt=True;TrustServerCertificate=False;")]
