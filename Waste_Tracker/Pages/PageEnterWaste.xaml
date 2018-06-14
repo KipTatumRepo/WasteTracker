@@ -75,7 +75,7 @@
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver, ValidatesOnExceptions=True}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".5*" FontSize="36"
                                     CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, ValidatesOnExceptions=True}" Header="Ordered" HeaderStyle="{StaticResource CenterGridHeader}" 
+                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, ValidatesOnExceptions=True}" Header="Produced" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".5*" FontSize="36"
                                     CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
             </DataGrid.Columns>
