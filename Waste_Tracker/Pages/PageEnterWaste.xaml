@@ -75,9 +75,9 @@
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver, ValidatesOnExceptions=True}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".5*" FontSize="36"
                                     CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
-                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, ValidatesOnExceptions=True}" Header="Produced" HeaderStyle="{StaticResource CenterGridHeader}" 
+                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered}" Header="Produced" HeaderStyle="{StaticResource CenterGridHeader}" 
                                     CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".5*" FontSize="36"
-                                    CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
+                                    CanUserSort="False"/> <!--EditingElementStyle="{StaticResource errorStyle}"-->
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Update Values"  Grid.Row="5" Margin="5,2,5,5" Click="Button_Click_1" Style="{StaticResource Buttons}"/>

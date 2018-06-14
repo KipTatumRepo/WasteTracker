@@ -15,7 +15,7 @@
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>\\compasspowerbi\BusinessIntelligence\\Internal Partner Data Sources\SVC Production PBI Source Files\Waste Tracker\</PublishUrl>
-    <Install>false</Install>
+    <Install>true</Install>
     <InstallFrom>Unc</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
     <UpdateMode>Foreground</UpdateMode>
@@ -27,7 +27,7 @@
     <InstallUrl>\\compasspowerbi\BusinessIntelligence\\Internal Partner Data Sources\SVC Production PBI Source Files\Waste Tracker\</InstallUrl>
     <ProductName>Waste Tracker</ProductName>
     <PublisherName>Compass Business Intelligence</PublisherName>
-    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationRevision>6</ApplicationRevision>
     <ApplicationVersion>1.1.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>

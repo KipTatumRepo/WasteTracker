@@ -89,10 +89,10 @@ namespace Waste_Tracker.Pages
             ws.Range["A3"].Value = "Menu Item";
             ws.Range["B3"].Cells.ColumnWidth = 24;
             ws.Range["B3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["B3"].Value = "Percentage of Consumed";
+            ws.Range["B3"].Value = "% of Par Left Over";
             ws.Range["C3"].Cells.ColumnWidth = 24;
             ws.Range["C3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["C3"].Value = "Percentage of Waste";
+            ws.Range["C3"].Value = "% of Prod Left Over";
 
             //iterate through datagrid and put into excel doc
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)

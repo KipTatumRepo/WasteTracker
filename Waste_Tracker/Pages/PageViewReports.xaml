@@ -53,14 +53,14 @@
                 <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="idealLeftOverColumn" Binding="{Binding IdealLeftOver}" Header="Calc Left Over" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False" Visibility="Hidden"/>
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, StringFormat=\{0:F\}}" Header="Ordered" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
+                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, StringFormat=\{0:F\}}" Header="Produced" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="percOfConsumedColumn" Binding="{Binding PercOfConsumed, StringFormat=\{0:F\}}" Header="Percent Consumed" Width="*" CanUserSort="False" 
+                <DataGridTextColumn x:Name="percOfConsumedColumn" Binding="{Binding PercOfConsumed, StringFormat=\{0:F\}}" Header="% of Par Left Over" Width=".6*" CanUserSort="False" 
                                     HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="percOfWasteColumn" Binding="{Binding PercOfWaste, StringFormat=\{0:F\}}" Header="Percent Waste" Width="*"  CanUserSort="False"
+                <DataGridTextColumn x:Name="percOfWasteColumn" Binding="{Binding PercOfWaste, StringFormat=\{0:F\}}" Header="% of Prod Left Over" Width=".6*"  CanUserSort="False"
                                     HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>

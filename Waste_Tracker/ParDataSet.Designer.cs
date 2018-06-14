@@ -878,7 +878,7 @@ namespace Waste_Tracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public WasteTrackerDBRow AddWasteTrackerDBRow(int StationId, string MenuItem, decimal LeftOver, decimal Par, string UoM, System.DateTime Date, bool IsActive, int Ordered, decimal PercOfConsumed, decimal PercOfWaste, decimal IdealLeftOver) {
+            public WasteTrackerDBRow AddWasteTrackerDBRow(int StationId, string MenuItem, decimal LeftOver, decimal Par, string UoM, System.DateTime Date, bool IsActive, decimal Ordered, decimal PercOfConsumed, decimal PercOfWaste, decimal IdealLeftOver) {
                 WasteTrackerDBRow rowWasteTrackerDBRow = ((WasteTrackerDBRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -955,7 +955,7 @@ namespace Waste_Tracker {
                 base.Columns.Add(this.columnDate);
                 this.columnIsActive = new global::System.Data.DataColumn("IsActive", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsActive);
-                this.columnOrdered = new global::System.Data.DataColumn("Ordered", typeof(int), null, global::System.Data.MappingType.Element);
+                this.columnOrdered = new global::System.Data.DataColumn("Ordered", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrdered);
                 this.columnPercOfConsumed = new global::System.Data.DataColumn("PercOfConsumed", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPercOfConsumed);
@@ -1611,10 +1611,10 @@ namespace Waste_Tracker {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public int Ordered {
+            public decimal Ordered {
                 get {
                     try {
-                        return ((int)(this[this.tableWasteTrackerDB.OrderedColumn]));
+                        return ((decimal)(this[this.tableWasteTrackerDB.OrderedColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
                         throw new global::System.Data.StrongTypingException("The value for column \'Ordered\' in table \'WasteTrackerDB\' is DBNull.", e);

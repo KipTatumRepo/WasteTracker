@@ -79,7 +79,7 @@ namespace Waste_Tracker
                     SqlConnection conn = ConnectionHelper.GetConn();
                     conn.Open();
                     decimal LeftOver;
-                    int Ordered;
+                    decimal Ordered;
 
                     //iterate over each row of DataGrid, get values of each cell, and insert into DB
                     foreach (DataRow dr in ds.WasteTrackerDB.Rows)
@@ -106,7 +106,7 @@ namespace Waste_Tracker
                         else
                         { 
                         LeftOver = decimal.Parse(leftOver);
-                        Ordered = int.Parse(ordered);
+                        Ordered = decimal.Parse(ordered);
                             if (LeftOver < 0 || Ordered < 0 || LeftOver == -1 || Ordered == -1 )
                             {
                                 BIMessageBox.Show("Please enter a valid number between 0 and 9999999999");
