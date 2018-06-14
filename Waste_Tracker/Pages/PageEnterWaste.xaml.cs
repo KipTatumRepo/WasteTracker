@@ -45,7 +45,7 @@ namespace Waste_Tracker
             }
             catch (Exception ex)
             {
-                BIMessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
+                System.Windows.MessageBox.Show("Oops there was a problem, please contact Business Intelligence \n" + ex);
             }
         }
 
