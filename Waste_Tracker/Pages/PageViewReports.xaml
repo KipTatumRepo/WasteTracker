@@ -14,7 +14,7 @@
         <CollectionViewSource x:Key="menuItemsViewSource" Source="{Binding MenuItems, Source={StaticResource sandboxDataSet}}"/>
     </Page.Resources>
 
-    <Grid Background="OldLace" DataContext="{StaticResource wasteTrackerStationsViewSource}">
+    <Grid Background="OldLace">
         <Grid.RowDefinitions>
             <RowDefinition Height=".15*"/>
             <RowDefinition Height=".15*"/>
@@ -28,9 +28,12 @@
         <!-- Text on Top -->
         <TextBlock Grid.Row="0" FontSize="35" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Microsoft SVMT Waste Tracker" Height="50" />
         <TextBlock Grid.Row="1" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="View Reports"  Height="50" />
-        <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Date" />
-        <DatePicker x:Name="dateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="0,5,0,5" SelectedDateFormat="Short"/>
+        <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Start Date" Margin="166,28,572,0" />
+        <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="End Date" Margin="534,28,134,0" />
+        <DatePicker x:Name="startDateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
+                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="49,0,431,0" SelectedDateFormat="Short"/>
+        <DatePicker x:Name="endDateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
+            Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="453,0,27,0" SelectedDateFormat="Short"/>
         <TextBlock Grid.Row="4" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Select Station" Margin="0,5,0,5" />
         <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" 
                   HorizontalAlignment="Center" VerticalAlignment="Top" Width="320" Height="51" FontSize="30" Grid.Row="5" Margin="0,5,0,5"
@@ -65,5 +68,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Save as Excel" HorizontalAlignment="Right" Grid.Row="7" Margin="5,2,5,5" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource Buttons}" />
+        
+
     </Grid>
 </Page>

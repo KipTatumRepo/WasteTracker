@@ -52,8 +52,8 @@ namespace Waste_Tracker.Pages
 
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
-            DateTime? Date = dateDatePicker.SelectedDate;
-            string date = dateDatePicker.SelectedDate.ToString();
+            DateTime? Date = startDateDatePicker.SelectedDate;
+            string date = startDateDatePicker.SelectedDate.ToString();
             SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
             
             //fill datagrid with dataset of menu items that match station selection and date
@@ -83,7 +83,7 @@ namespace Waste_Tracker.Pages
 
             //create header
             ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString(); 
-            ws.Range["A2"].Cells.Value = dateDatePicker.SelectedDate.ToString();
+            ws.Range["A2"].Cells.Value = startDateDatePicker.SelectedDate.ToString();
             ws.Range["A3"].Cells.ColumnWidth = 24;
             ws.Range["A3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
             ws.Range["A3"].Value = "Menu Item";
