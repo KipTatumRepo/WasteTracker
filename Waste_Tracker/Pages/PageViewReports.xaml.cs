@@ -48,25 +48,72 @@ namespace Waste_Tracker.Pages
         #region Combobox Selection
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
-            DateTime? Date = startDateDatePicker.SelectedDate;
-            string date = startDateDatePicker.SelectedDate.ToString();
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            DateTime? StartDate = startDateDatePicker.SelectedDate;
+            DateTime? EndDate = endDateDatePicker.SelectedDate;
+            FillData(StartDate, EndDate, item);
             
-            //fill datagrid with dataset of menu items that match station selection and date
-            if(Date == null)
+            return;
+        }
+
+        private void endDateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int item = wasteTrackerStationsComboBox.SelectedIndex;
+            DateTime? StartDate = startDateDatePicker.SelectedDate;
+            DateTime? EndDate = endDateDatePicker.SelectedDate;
+
+            if (EndDate < StartDate)
+            {
+                BIMessageBox.Show("Please Select an End Date That is After the Start Date.");
+            }
+            else
+            {
+                FillData(StartDate, EndDate, item);
+            }
+        }
+
+        private void startDateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int item = wasteTrackerStationsComboBox.SelectedIndex;
+            DateTime? StartDate = startDateDatePicker.SelectedDate;
+            DateTime? EndDate = endDateDatePicker.SelectedDate;
+            if(StartDate > EndDate)
+            {
+                BIMessageBox.Show("Please Select a Start Date That is Before the End Date.");
+            }
+            else
+            { 
+                if(EndDate == null)
+                {
+                    return;
+                }
+                else
+                { 
+                    FillData(StartDate, EndDate, item);
+                }
+            }
+        }
+
+        public void FillData(DateTime? start, DateTime? end, int item)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            string startdate = start.ToString();
+            string enddate = end.ToString();
+            if (startdate == null)
             {
                 BIMessageBox.Show("Please Select a Date");
                 return;
             }
             else
             {
-                da.FillByStation3(ds.WasteTrackerDB, item, date);
+
+                da.FillByDateRange(ds.WasteTrackerDB, item, startdate, enddate);
+
             }
         }
+        
         #endregion
         #region Button Clicks
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -104,6 +151,9 @@ namespace Waste_Tracker.Pages
             }
             xla.Visible = true;
         }
+
         #endregion
+
+        
     }
 }

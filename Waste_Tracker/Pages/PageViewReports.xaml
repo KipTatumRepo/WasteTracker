@@ -31,9 +31,9 @@
         <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="Start Date" Margin="166,28,572,0" />
         <TextBlock Grid.Row="2" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Bottom" Text="End Date" Margin="534,28,134,0" />
         <DatePicker x:Name="startDateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
-                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="49,0,431,0" SelectedDateFormat="Short"/>
+                    Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="49,0,431,0" SelectedDateFormat="Short" SelectedDateChanged="startDateDatePicker_SelectedDateChanged"/>
         <DatePicker x:Name="endDateDatePicker" Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Top" 
-            Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="453,0,27,0" SelectedDateFormat="Short"/>
+            Background="LemonChiffon" FontSize="36" Width="320" Height="51" Margin="453,0,27,0" SelectedDateFormat="Short" SelectedDateChanged="endDateDatePicker_SelectedDateChanged"/>
         <TextBlock Grid.Row="4" FontSize="30" HorizontalAlignment="Center" VerticalAlignment="Top" Text="Select Station" Margin="0,5,0,5" />
         <ComboBox x:Name="wasteTrackerStationsComboBox" DisplayMemberPath="StationName" ItemsSource="{Binding Source={StaticResource wasteTrackerStationsViewSource}}" 
                   HorizontalAlignment="Center" VerticalAlignment="Top" Width="320" Height="51" FontSize="30" Grid.Row="5" Margin="0,5,0,5"
@@ -45,28 +45,34 @@
             </ComboBox.ItemsPanel>
         </ComboBox>
         <!-- End Text on Top -->
-        <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding Source={StaticResource wasteTrackerDBViewSource}}" 
-                   Margin="5,0,5,5" Grid.Row="6" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserReorderColumns="False"
-                   AlternatingRowBackground="AliceBlue">
+
+
+        <DataGrid x:Name="wasteTrackerDBDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding NotifyOnSourceUpdated=True, Source={StaticResource wasteTrackerDBViewSource}, UpdateSourceTrigger=PropertyChanged}" 
+                       Margin="5,0,5,5" Grid.Row="6" RowDetailsVisibilityMode="VisibleWhenSelected" CanUserAddRows="False" CanUserReorderColumns="False"
+                       AlternatingRowBackground="AliceBlue">
+
             <DataGrid.Columns>
                 <DataGridTextColumn x:Name="menuItemColumn" Binding="{Binding MenuItem}" Header="Menu Item" Width="*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="dateColumn" Binding="{Binding Date, StringFormat=d}" Header="Date" Width=".31*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False" FontSize="33"/>
+                <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" Width=".28*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" Width=".15*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
                 <DataGridTextColumn x:Name="idealLeftOverColumn" Binding="{Binding IdealLeftOver}" Header="Calc Left Over" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False" Visibility="Hidden"/>
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False" Visibility="Hidden"/>
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, StringFormat=\{0:F\}}" Header="Produced" Width=".5*" HeaderStyle="{StaticResource CenterGridHeader}"
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
-                <DataGridTextColumn x:Name="percOfConsumedColumn" Binding="{Binding PercOfConsumed, StringFormat=\{0:F\}}" Header="% of Par Left Over" Width=".6*" CanUserSort="False" 
-                                    HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
-                <DataGridTextColumn x:Name="percOfWasteColumn" Binding="{Binding PercOfWaste, StringFormat=\{0:F\}}" Header="% of Prod Left Over" Width=".6*"  CanUserSort="False"
-                                    HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered, StringFormat=\{0:F\}}" Header="Produced" Width=".3*" HeaderStyle="{StaticResource CenterGridHeader}"
+                                        CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserSort="False"/>
+                <DataGridTextColumn x:Name="percOfConsumedColumn" Binding="{Binding PercOfConsumed, StringFormat=\{0:F\}}" Header="% of Par Left Over" Width=".4*" CanUserSort="False" 
+                                        HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
+                <DataGridTextColumn x:Name="percOfWasteColumn" Binding="{Binding PercOfWaste, StringFormat=\{0:F\}}" Header="% of Prod Left Over" Width=".4*"  CanUserSort="False"
+                                        HeaderStyle="{StaticResource CenterGridHeader}" CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True"/>
             </DataGrid.Columns>
         </DataGrid>
+           
         <Button Content="Save as Excel" HorizontalAlignment="Right" Grid.Row="7" Margin="5,2,5,5" VerticalAlignment="Top" Click="Button_Click" Style="{StaticResource Buttons}" />
         
 

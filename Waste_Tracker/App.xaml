@@ -52,7 +52,7 @@
         <!-- Data Grid Styling -->
         <Style x:Key="CenterGridHeader" TargetType="{x:Type DataGridColumnHeader}">
             <Setter Property="HorizontalContentAlignment" Value="Center" />
-            <Setter Property="FontSize" Value="25" />
+            <Setter Property="FontSize" Value="20" />
             <Setter Property="Background" Value="LemonChiffon" />
             <Setter Property="BorderBrush" Value="Black" />
         </Style>
