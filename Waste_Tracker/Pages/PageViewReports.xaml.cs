@@ -48,25 +48,72 @@ namespace Waste_Tracker.Pages
         #region Combobox Selection
         private void wasteTrackerStationsComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
-
             //get index of combobox selected item 0 based
             int item = wasteTrackerStationsComboBox.SelectedIndex;
-            DateTime? Date = dateDatePicker.SelectedDate;
-            string date = dateDatePicker.SelectedDate.ToString();
-            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            DateTime? StartDate = startDateDatePicker.SelectedDate;
+            DateTime? EndDate = endDateDatePicker.SelectedDate;
+            FillData(StartDate, EndDate, item);
             
-            //fill datagrid with dataset of menu items that match station selection and date
-            if(Date == null)
+            return;
+        }
+
+        private void endDateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int item = wasteTrackerStationsComboBox.SelectedIndex;
+            DateTime? StartDate = startDateDatePicker.SelectedDate;
+            DateTime? EndDate = endDateDatePicker.SelectedDate;
+
+            if (EndDate < StartDate)
+            {
+                BIMessageBox.Show("Please Select an End Date That is After the Start Date.");
+            }
+            else
+            {
+                FillData(StartDate, EndDate, item);
+            }
+        }
+
+        private void startDateDatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            int item = wasteTrackerStationsComboBox.SelectedIndex;
+            DateTime? StartDate = startDateDatePicker.SelectedDate;
+            DateTime? EndDate = endDateDatePicker.SelectedDate;
+            if(StartDate > EndDate)
+            {
+                BIMessageBox.Show("Please Select a Start Date That is Before the End Date.");
+            }
+            else
+            { 
+                if(EndDate == null)
+                {
+                    return;
+                }
+                else
+                { 
+                    FillData(StartDate, EndDate, item);
+                }
+            }
+        }
+
+        public void FillData(DateTime? start, DateTime? end, int item)
+        {
+            SandboxDataSet ds = ((SandboxDataSet)(FindResource("sandboxDataSet")));
+            SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter da = new SandboxDataSetTableAdapters.WasteTrackerDBTableAdapter();
+            string startdate = start.ToString();
+            string enddate = end.ToString();
+            if (startdate == null)
             {
                 BIMessageBox.Show("Please Select a Date");
                 return;
             }
             else
             {
-                da.FillByStation3(ds.WasteTrackerDB, item, date);
+
+                da.FillByDateRange(ds.WasteTrackerDB, item, startdate, enddate);
+
             }
         }
+        
         #endregion
         #region Button Clicks
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -82,28 +129,38 @@ namespace Waste_Tracker.Pages
             int i = 4;
 
             //create header
-            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString(); 
-            ws.Range["A2"].Cells.Value = dateDatePicker.SelectedDate.ToString();
+            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString();
+            ws.Range["A2"].Cells.Value = "Report Generated on: " + DateTime.Now; //startDateDatePicker.SelectedDate.ToString();
             ws.Range["A3"].Cells.ColumnWidth = 24;
             ws.Range["A3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
             ws.Range["A3"].Value = "Menu Item";
             ws.Range["B3"].Cells.ColumnWidth = 24;
             ws.Range["B3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["B3"].Value = "% of Par Left Over";
+            ws.Range["B3"].Value = "Date";
             ws.Range["C3"].Cells.ColumnWidth = 24;
             ws.Range["C3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["C3"].Value = "% of Prod Left Over";
+            ws.Range["C3"].Value = "% of Par Left Over";
+            ws.Range["D3"].Cells.ColumnWidth = 24;
+            ws.Range["D3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["D3"].Value = "% of Prod Left Over";
+            ws.Range["E3"].Cells.ColumnWidth = 48;
+            ws.Range["E3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["E3"].Cells.WrapText = true;
+            ws.Range["E3"].Value = "Notes";
 
             //iterate through datagrid and put into excel doc
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)
             {
-                ws.Range["A"+i].Value = dr[2];
-                ws.Range["B"+i].Value = dr[9];
-                ws.Range["C"+i].Value = dr[10];
+                ws.Range["A" + i].Value = dr[2];
+                ws.Range["B" + i].Value = dr[6];
+                ws.Range["C" + i].Value = dr[9];
+                ws.Range["D" + i].Value = dr[10];
+                ws.Range["E" + i].Value = dr[12];
                 i++;
             }
             xla.Visible = true;
         }
+
         #endregion
     }
 }
