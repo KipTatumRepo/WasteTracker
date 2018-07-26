@@ -143,6 +143,10 @@ namespace Waste_Tracker.Pages
             ws.Range["D3"].Cells.ColumnWidth = 24;
             ws.Range["D3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
             ws.Range["D3"].Value = "% of Prod Left Over";
+            ws.Range["E3"].Cells.ColumnWidth = 48;
+            ws.Range["E3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["E3"].Cells.WrapText = true;
+            ws.Range["E3"].Value = "Notes";
 
             //iterate through datagrid and put into excel doc
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)
@@ -151,13 +155,12 @@ namespace Waste_Tracker.Pages
                 ws.Range["B" + i].Value = dr[6];
                 ws.Range["C" + i].Value = dr[9];
                 ws.Range["D" + i].Value = dr[10];
+                ws.Range["E" + i].Value = dr[12];
                 i++;
             }
             xla.Visible = true;
         }
 
         #endregion
-
-        
     }
 }

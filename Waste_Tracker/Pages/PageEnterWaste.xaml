@@ -67,17 +67,20 @@
                                     CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" Width="*" FontSize="36"
                                     CanUserSort="False"/>
                 <DataGridTextColumn x:Name="parColumn" Binding="{Binding Par}" Header="Par" HeaderStyle="{StaticResource CenterGridHeader}" 
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" Width="*" FontSize="36"
+                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" Width=".25*" FontSize="36"
                                     CanUserSort="False"/>
                 <DataGridTextColumn x:Name="uoMColumn" Binding="{Binding UoM}" Header="UoM" HeaderStyle="{StaticResource CenterGridHeader}" 
-                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" Width="*" FontSize="36"
+                                    CellStyle="{StaticResource CenterCellTextLocked}" IsReadOnly="True" CanUserResize="False" Width=".27*" FontSize="36"
                                     CanUserSort="False"/>
                 <DataGridTextColumn x:Name="leftOverColumn" Binding="{Binding LeftOver, ValidatesOnExceptions=True}" Header="Left Over" HeaderStyle="{StaticResource CenterGridHeader}" 
-                                    CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".5*" FontSize="36"
+                                    CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".27*" FontSize="36"
                                     CanUserSort="False" EditingElementStyle="{StaticResource errorStyle}"/>
                 <DataGridTextColumn x:Name="orderedColumn" Binding="{Binding Ordered}" Header="Produced" HeaderStyle="{StaticResource CenterGridHeader}" 
-                                    CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".5*" FontSize="36"
-                                    CanUserSort="False"/> <!--EditingElementStyle="{StaticResource errorStyle}"-->
+                                    CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width=".27*" FontSize="36"
+                                    CanUserSort="False"/>
+                <DataGridTextColumn x:Name="notesColumn" Binding="{Binding Notes}" Header="Notes" HeaderStyle="{StaticResource CenterGridHeader}" 
+                                    CellStyle="{StaticResource CenterCellText}" IsReadOnly="False" CanUserResize="False" Width="*" FontSize="20"
+                                    CanUserSort="False"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button Content="Update Values"  Grid.Row="5" Margin="5,2,5,5" Click="Button_Click_1" Style="{StaticResource Buttons}"/>
