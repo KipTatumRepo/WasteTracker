@@ -129,24 +129,28 @@ namespace Waste_Tracker.Pages
             int i = 4;
 
             //create header
-            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString(); 
-            ws.Range["A2"].Cells.Value = startDateDatePicker.SelectedDate.ToString();
+            ws.Range["A1"].Cells.Value = wasteTrackerStationsComboBox.SelectedValue.ToString();
+            ws.Range["A2"].Cells.Value = "Report Generated on: " + DateTime.Now; //startDateDatePicker.SelectedDate.ToString();
             ws.Range["A3"].Cells.ColumnWidth = 24;
             ws.Range["A3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter; 
             ws.Range["A3"].Value = "Menu Item";
             ws.Range["B3"].Cells.ColumnWidth = 24;
             ws.Range["B3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["B3"].Value = "% of Par Left Over";
+            ws.Range["B3"].Value = "Date";
             ws.Range["C3"].Cells.ColumnWidth = 24;
             ws.Range["C3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
-            ws.Range["C3"].Value = "% of Prod Left Over";
+            ws.Range["C3"].Value = "% of Par Left Over";
+            ws.Range["D3"].Cells.ColumnWidth = 24;
+            ws.Range["D3"].Cells.HorizontalAlignment = Microsoft.Office.Interop.Excel.XlHAlign.xlHAlignCenter;
+            ws.Range["D3"].Value = "% of Prod Left Over";
 
             //iterate through datagrid and put into excel doc
             foreach (DataRow dr in ds.WasteTrackerDB.Rows)
             {
-                ws.Range["A"+i].Value = dr[2];
-                ws.Range["B"+i].Value = dr[9];
-                ws.Range["C"+i].Value = dr[10];
+                ws.Range["A" + i].Value = dr[2];
+                ws.Range["B" + i].Value = dr[6];
+                ws.Range["C" + i].Value = dr[9];
+                ws.Range["D" + i].Value = dr[10];
                 i++;
             }
             xla.Visible = true;
