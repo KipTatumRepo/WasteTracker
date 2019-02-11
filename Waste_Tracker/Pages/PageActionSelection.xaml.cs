@@ -18,6 +18,7 @@ namespace Waste_Tracker
     /// <summary>
     /// Interaction logic for PageActionSelection.xaml
     /// </summary>
+	/// added comment
     public partial class PageActionSelection : Page
     {
         public PageActionSelection()
